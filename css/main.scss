@@ -8,8 +8,14 @@ img { margin-bottom: 24px;
     border-radius:2%;
 }
 
+html, body {
+  height: 100%;
+}
+
 
 body {
+	  display: flex;
+  flex-direction: column;
 	padding-top: 70px;
 }
 
@@ -44,6 +50,7 @@ firstp {
   margin-right: auto;
   margin-left: auto;
   max-width: 1400px; /* or 950px */
+  flex: 1;
 }
 
 /* Home, News */

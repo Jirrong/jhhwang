@@ -1,14 +1,12 @@
 ---
-title: "Allan Lab - Home"
+title: "Jiho Hwang - Home"
 layout: homelay
 excerpt: "Allan Lab at Leiden University &rarr; LMU."
 sitemap: false
 permalink: /
 ---
 
-**News: Our group moved to the University of Munich (LMU)!** Join us! 
-
-We are a dynamic research group at [LMU physics](https://www.physik.lmu.de/en/index.html) and at the [Leiden Institute of Physics](http://www.physics.leidenuniv.nl/). 
+**This is the Personal Academic Website of Jiho Hwang**, an undergraduate student at the [Department of Chemistry, Seoul National University(SNU)](https://chem.snu.ac.kr/)!
 
 We have two overarching goals: first, 
 **to understand quantum materials**, including strange metals, high-temperature superconductors, and quantum critical electron matter. Second, **to make novel and useful materials** that never existed before, like possible room-temperature superconductors. 
