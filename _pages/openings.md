@@ -1,9 +1,9 @@
 ---
-title: "Allan Lab - Vacancies"
+title: "Research Interests"
 layout: textlay
 excerpt: "Openings"
 sitemap: false
-permalink: /cv/
+permalink: /interests/
 ---
 
 # Open positions
