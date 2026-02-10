@@ -65,6 +65,6 @@ We are currently building up our instruments right in the center of Munich, in t
 
 
 <figure class="fifth">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuscience.svg" style="height: 65px">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuchem.png" style="height: 70px">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuscience.svg" style="height: 58px">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuchem.png" style="height: 63px">
 </figure>
