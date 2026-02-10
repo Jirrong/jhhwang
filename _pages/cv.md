@@ -1,14 +1,14 @@
 ---
-title: "Allan Lab - Team"
+title: "Jiho Hwang - CV"
 layout: gridlay
-excerpt: "Allan Lab: Team members"
+excerpt: "Jiho Hwang: CV"
 sitemap: false
 permalink: /cv/
 ---
 
-# Group Members
+# CV (Curriculum Vitae)
 
- **We are  looking for new PhD students, Postdocs, and Master students to join the team** [(see openings)]({{ site.url }}{{ site.baseurl }}/vacancies) **!**
+ **Last Updated on 11 February 2026**
 
 
 Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-students), [alumni](#alumni), [administrative support](#administrative-support), [lab visitors](#lab-visitors).
