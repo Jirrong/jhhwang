@@ -8,7 +8,7 @@ permalink: /cv/
 
 # CV (Curriculum Vitae)
 
- **Last Updated on 11 February 2026**
+ **Last Updated on 13 February 2026**
 
 
 ## Staff
