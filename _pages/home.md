@@ -1,7 +1,7 @@
 ---
-title: "Jiho Hwang - Home"
+title: "Home"
 layout: homelay
-excerpt: "Allan Lab at Leiden University &rarr; LMU."
+excerpt: "Home"
 sitemap: false
 permalink: /
 ---
@@ -65,6 +65,6 @@ We are currently building up our instruments right in the center of Munich, in t
 
 
 <figure class="fifth">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuscience.svg" style="height: 58px">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuchem.png" style="height: 63px">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuscience.svg" style="height: 53px">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuchem.png" style="height: 58px">
 </figure>

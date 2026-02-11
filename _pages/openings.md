@@ -1,7 +1,7 @@
 ---
 title: "Research Interests"
 layout: textlay
-excerpt: "Openings"
+excerpt: "Research Interests"
 sitemap: false
 permalink: /interests/
 ---

@@ -1,7 +1,7 @@
 ---
-title: "Jiho Hwang - Publications"
+title: "Publications"
 layout: gridlay
-excerpt: "Jiho Hwang -- Publications."
+excerpt: "Publications."
 sitemap: false
 permalink: /publications/
 ---

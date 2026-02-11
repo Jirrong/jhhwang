@@ -1,7 +1,7 @@
 ---
-title: "Jiho Hwang - CV"
+title: "CV"
 layout: gridlay
-excerpt: "Jiho Hwang: CV"
+excerpt: "CV"
 sitemap: false
 permalink: /cv/
 ---
@@ -190,5 +190,7 @@ permalink: /cv/
 </div>
 
 
-## Administrative Support
-<a href="mailto:Rijsewijk@Physics.LeidenUniv.nl">Ellie van Rijsewijk</a> is helping us (and other groups) with administration.
+<figure class="fifth">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuscience.svg" style="height: 53px">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuchem.png" style="height: 58px">
+</figure>
