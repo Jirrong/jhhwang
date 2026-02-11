@@ -6,9 +6,9 @@ sitemap: false
 permalink: /interests/
 ---
 
-# Open positions
+# Research Interests
 
-**We are currently open for PhD and postdoc applications related to our ERC CoG grant. The positions are mostly related to the Electron Pair Microscopy projects.**
+**I am currently an undergraduate student studying chemistry, **
 
 We are  looking for new group members with passion, talent, and grit!
 

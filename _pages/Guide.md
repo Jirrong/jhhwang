@@ -1,9 +1,9 @@
 ---
-title: "Allan Lab - Instrumente"
+title: "Guide"
 layout: textlay
-excerpt: "AOA"
+excerpt: "Guide"
 sitemap: false
-permalink: /instrumente.html
+permalink: /guide/
 ---
 
 
