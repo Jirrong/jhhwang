@@ -11,7 +11,7 @@ permalink: /cv/
  **Last Updated on 13 February 2026**
 
 
-## Staff
+### Introdution
 {% assign number_printed = 0 %}
 {% for member in site.data.team_members %}
 
@@ -76,7 +76,7 @@ permalink: /cv/
 
 
 
-## Master and Bachelor Students
+## Education
 {% assign number_printed = 0 %}
 {% for member in site.data.students %}
 
@@ -130,7 +130,7 @@ permalink: /cv/
 {% endif %}
 
 
-## Alumni
+## Experiences
 
 {% assign number_printed = 0 %}
 {% for member in site.data.alumni_members %}
