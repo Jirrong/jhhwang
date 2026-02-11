@@ -14,7 +14,7 @@ permalink: /cv/
 <div class="row" style="margin-top: 2em; display: flex; flex-wrap: wrap; align-items: center;">
   
   <div class="col-sm-4" style="text-align: center; margin-bottom: 20px;">
-    <img src="{{ site.url }}{{ site.baseurl }}/images/profile.jpg" 
+    <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/profile.jpg" 
          style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #eee; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
          alt="Jiho Hwang">
   </div>
