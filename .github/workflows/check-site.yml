@@ -18,6 +18,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: python3 scripts/check_template.py
+      - run: bundle exec ruby scripts/check_content.rb
+      - run: bundle exec ruby scripts/check_publication_rendering.rb
       - run: bundle exec jekyll build --strict_front_matter --trace
       - run: python3 scripts/check_site.py _site
       - run: npm ci --ignore-scripts --no-fund --no-audit

@@ -1,70 +1,39 @@
 ---
-title: "Home"
+title: "Jiho Hwang"
+heading: "Jiho Hwang"
 layout: homelay
-excerpt: "Home"
-sitemap: false
+excerpt: "Jiho Hwang, undergraduate student in Chemistry at Seoul National University."
 permalink: /
 ---
 
-**This is the Personal Academic Website of Jiho Hwang**, an undergraduate student at the [Department of Chemistry, Seoul National University(SNU)](https://chem.snu.ac.kr/)!
+<div class="row" markdown="0"><div class="col-sm-3"><img class="img-responsive" src="{{ site.data.cv.identity.portrait | relative_url }}" alt="Jiho Hwang" width="354" height="472"></div><div class="col-sm-9"><p>{{ site.data.cv.identity.introduction | escape }}</p><p>My research experience includes computational studies of organic reaction mechanisms, thermochemistry, molecular conformations, and excited states.</p><p><a href="{{ '/cv/' | relative_url }}">Curriculum vitae</a> · <a href="mailto:{{ site.email | escape }}">Email</a> · <a href="{{ site.data.cv.identity.github }}">GitHub</a></p></div></div>
 
-We have two overarching goals: first, 
-**to understand quantum materials**, including strange metals, high-temperature superconductors, and quantum critical electron matter. Second, **to make novel and useful materials** that never existed before, like possible room-temperature superconductors. 
-To achieve these goals, we develop new quantum sensing and quantum imaging instrumentation to obtain the key quantum mechanical degrees of freedom. We want to build the perfect instruments to answer the scientific questions we deem most important. 
+## Research Interests
 
-<div markdown="0" id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="hover" >
-    <!-- Menu -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel" data-slide-to="1"></li>
-        <li data-target="#carousel" data-slide-to="2"></li>
-        <li data-target="#carousel" data-slide-to="3"></li>
-        <li data-target="#carousel" data-slide-to="4"></li>
-        <li data-target="#carousel" data-slide-to="5"></li>
-        <li data-target="#carousel" data-slide-to="6"></li>
-    </ol>
+{% for area in site.data.cv.research_interests %}
+### [{{ area.title }}]({{ '/interests/' | relative_url }}#{{ area.id }})
 
-    <!-- Items -->
-    <div class="carousel-inner" markdown="0">
-        <div class="item active">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/QPI_Rh.jpg" alt="Slide 1" />
-        </div>
-        <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/SmartTipSide.jpg" alt="Slide 2" />
-        </div>
-        <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/SaphireSTM2.jpg" alt="Slide 3" />
-        </div>
-        <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/lab.jpg" alt="Slide 4" />
-        </div>
-        <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/Fig_Science_Web.jpg" alt="Slide 5" />
-        </div>       
-         <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/BSCCO2gap2.jpg" alt="Slide 6" />
-        </div>
-    </div>
-  <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+{{ area.description }}
+{% endfor %}
 
+## Research Experience
 
-We are currently building up our instruments right in the center of Munich, in the *Sommerfeldkeller*, where Sommerfeld and Röntgen worked. We will exchange ideas with world class groups working in quantum physics, cold-atom many-body physics, and 2d quantum materials. We are also a proud member of the [SuperC consortium](https://superc2033.com/our-team/).
+{% for project in site.data.cv.research_experience %}
+**{{ project.title }}** — {{ project.institution }}<br>
+{{ project.dates }}
 
-**We are looking for passionate new PhD students, Postdocs, and Master students to join the team** [(more info)](https://www.allanlab.org/vacancies) **!**
+{{ project.points | first }}
+{% endfor %}
 
+[Research interests and experience →]({{ '/interests/' | relative_url }})
 
+## Recent Blog Posts
 
+{% for post in site.posts limit:3 %}
+### [{{ post.title }}]({{ post.url | relative_url }})
 
+{{ post.date | date: '%d %B %Y' }}<br>
+{{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 180 }}
+{% endfor %}
 
-<figure class="fifth">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuscience.svg" style="height: 53px">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuchem.png" style="height: 58px">
-</figure>
+[All blog posts →]({{ '/blog/' | relative_url }})

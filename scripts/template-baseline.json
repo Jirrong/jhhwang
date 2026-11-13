@@ -1,12 +1,9 @@
 {
   "commit": "f25f182c00dbd1e625bb355571cc352bb9f40612",
   "files": {
-    "_includes/footer.html": "82b379c016444cd7a18db1d2c77e978f254fef13",
     "_includes/head.html": "d3f90622425bba47dda66a825d0464750a29e375",
-    "_includes/header.html": "a746dbbb8e6b81e99c35ac0cdaaba4f4d16957e2",
     "_layouts/default.html": "df89cb68a5d35ec5620148fbe5e2764dddb1375d",
     "_layouts/gridlay.html": "4560794092cc0af07190ac90a683497230f7707f",
-    "_layouts/homelay.html": "87d0665ed85f7f134cfb1cb503ae1d2134f29e8a",
     "_layouts/page.html": "ce233ad75bfb7966cc211c065626d880aa46ef95",
     "_layouts/piclay.html": "3a7ddcaa493244a49fd6b8004edd4a9a8909227b",
     "_layouts/post.html": "3a0fb52ecf57ab45874f66867d1217fa51ccc3b6",
@@ -14,11 +11,6 @@
     "_layouts/research.html": "1fb65e773604c0ac46b67049ac754a073e59a585",
     "_layouts/team.html": "c17f2cea8b9b615b0f45943d0d74fa02ab81e669",
     "_layouts/textlay.html": "a2bbf5e3f9ae2f60d719e96de1a65b596b433e06",
-    "_pages/404.md": "4dfa48449bd4a5cc319c9b6b1f50f874667ef12f",
-    "_pages/cv.md": "249cb502916d12c2cf64d8a7a779cb2f4f3fe0b5",
-    "_pages/home.md": "981d40990084d8eb2943b0646050b5842d29dbb1",
-    "_pages/interests.md": "4ad88826144c6e2b71dad18a85ec24339548d78a",
-    "_pages/publications.md": "992f6fc25eff2b658d657fbb3d3bab736d2b33f8",
     "_sass/.DS_Store": "4068988b2e97e37387ad67f4700e0281314d0f10",
     "_sass/_bootstrap.scss": "9babefd597b587d14d1220db73d6da92ccbcaf54",
     "_sass/bootstrap/_alerts.scss": "7d1e1fddd15d81820e7bcfbd4b270381cf3b9377",
@@ -101,5 +93,16 @@
     "fonts/glyphicons-halflings-regular.woff": "9e612858f802245ddcbf59788a0db942224bab35",
     "fonts/glyphicons-halflings-regular.woff2": "64539b54c3751a6d9adb44c8e3a45ba5a73b77f0",
     "js/bootstrap.min.js": "e79c065134f2cfcf3e44a59cffcb5f090232f98f"
-  }
+  },
+  "authorized_content_templates": {
+    "_includes/header.html": "a746dbbb8e6b81e99c35ac0cdaaba4f4d16957e2",
+    "_includes/footer.html": "82b379c016444cd7a18db1d2c77e978f254fef13",
+    "_layouts/homelay.html": "87d0665ed85f7f134cfb1cb503ae1d2134f29e8a",
+    "_pages/home.md": "981d40990084d8eb2943b0646050b5842d29dbb1",
+    "_pages/cv.md": "249cb502916d12c2cf64d8a7a779cb2f4f3fe0b5",
+    "_pages/interests.md": "4ad88826144c6e2b71dad18a85ec24339548d78a",
+    "_pages/publications.md": "992f6fc25eff2b658d657fbb3d3bab736d2b33f8",
+    "_pages/404.md": "4dfa48449bd4a5cc319c9b6b1f50f874667ef12f"
+  },
+  "policy": "Original theme CSS, Sass, fonts, grid, and remaining layouts stay unchanged. The user explicitly authorized CV reconstruction and personal content replacement in the listed templates."
 }

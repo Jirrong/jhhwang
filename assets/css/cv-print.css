@@ -1,0 +1,16 @@
+/* Print-only rules. The screen theme remains the original Allan Lab theme. */
+@media print {
+  .navbar, #footer, .cv-tools { display: none !important; }
+  body { padding-top: 0; font-size: 10pt; }
+  .container-fluid { max-width: none; width: 100%; padding: 0; }
+  #gridid { width: 100%; padding: 0; }
+  .cv-record .row { margin-bottom: 9pt; break-inside: avoid; }
+  .cv-record h2 { font-size: 14pt; margin-top: 16pt; break-after: avoid; }
+  .cv-record h4 { font-size: 10pt; margin-top: 0; }
+  .cv-record p, .cv-record li { font-size: 10pt; }
+  .cv-record a { text-decoration: none; }
+  .cv-record a[href]::after { content: none !important; }
+  .cv-record .col-sm-3 { float: left; width: 25%; }
+  .cv-record .col-sm-9 { float: left; width: 75%; }
+  @page { margin: 16mm; }
+}

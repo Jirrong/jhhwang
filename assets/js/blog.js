@@ -34,7 +34,7 @@
       chip.classList.toggle('btn-primary', active);
       chip.classList.toggle('btn-default', !active);
     });
-    status.textContent = `${count}개의 노트${activeTag ? ` · ${activeTag}` : ''}${terms.length ? (fullIndex ? ' · 본문까지 검색' : indexFailed ? ' · 제목·설명·태그 검색' : ' · 본문 검색 준비 중') : ''}`;
+    status.textContent = `${count} ${count === 1 ? 'post' : 'posts'}${activeTag ? ` · ${activeTag}` : ''}${terms.length ? (fullIndex ? ' · Full-text search' : indexFailed ? ' · Searching titles, descriptions, and tags' : ' · Loading full-text search…') : ''}`;
     empty.hidden = count !== 0;
     if (updateURL) {
       const url = new URL(location.href);

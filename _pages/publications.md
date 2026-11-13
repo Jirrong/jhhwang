@@ -1,67 +1,37 @@
 ---
 title: "Publications"
 layout: gridlay
-excerpt: "Publications."
-sitemap: false
+excerpt: "Publications by Jiho Hwang."
 permalink: /publications/
 ---
 
-
 # Publications
 
-## Personal highlights
-
-**At the end of this page, you can find the [full list of publications and patents](#full-list-of-publications). All papers are also available on [arXiv](https://arxiv.org/search/?searchtype=author&query=Allan%2C+M+P).**
-
-{% assign number_printed = 0 %}
-{% for publi in site.data.publist %}
-
-{% assign even_odd = number_printed | modulo: 2 %}
-{% if publi.highlight == 1 %}
-
-{% if even_odd == 0 %}
-<div class="row">
-{% endif %}
-
-<div class="col-sm-6 clearfix">
- <div class="well">
-  <pubtit>{{ publi.title }}</pubtit>
-  <img src="{{ site.url }}{{ site.baseurl }}/images/pubpic/{{ publi.image }}" class="img-responsive" width="33%" style="float: left" />
-  <p>{{ publi.description }}</p>
-  <p><em>{{ publi.authors }}</em></p>
-  <p><strong><a href="{{ publi.link.url }}">{{ publi.link.display }}</a></strong></p>
-  <p class="text-danger"><strong> {{ publi.news1 }}</strong></p>
-  <p> {{ publi.news2 }}</p>
- </div>
-</div>
-
-{% assign number_printed = number_printed | plus: 1 %}
-
-{% if even_odd == 1 %}
-</div>
-{% endif %}
-
-{% endif %}
+<div markdown="0">
+{% assign publications = site.data.publist | where_exp: 'paper', 'paper.published != false' %}
+{% assign highlights = publications | where: 'highlight', 1 %}
+{% if publications.size == 0 %}
+<p>No publications listed.</p>
+{% else %}
+{% if highlights.size > 0 %}
+<h2>Selected Publications</h2>
+{% for paper in highlights %}
+{% assign parity = forloop.index0 | modulo: 2 %}{% if parity == 0 %}<div class="row">{% endif %}
+<div class="col-sm-6 clearfix"><div class="well publication-highlight">
+<pubtit>{{ paper.title | escape }}</pubtit>
+{% if paper.image and paper.image != '' %}<img src="{{ '/images/pubpic/' | append: paper.image | relative_url }}" class="img-responsive" width="33%" style="float: left" alt="Figure for {{ paper.title | escape }}">{% endif %}
+{% if paper.description and paper.description != '' %}<div>{{ paper.description | markdownify }}</div>{% endif %}
+<p><em>{{ paper.authors | escape }}</em></p>
+{% if paper.link.url and paper.link.url != '' %}<p><strong><a href="{{ paper.link.url | escape }}">{{ paper.link.display | default: 'Read publication' | escape }}</a></strong></p>{% elsif paper.link.display and paper.link.display != '' %}<p>{{ paper.link.display | escape }}</p>{% endif %}
+{% if paper.news1 and paper.news1 != '' %}<div class="text-danger">{{ paper.news1 | markdownify }}</div>{% endif %}
+{% if paper.news2 and paper.news2 != '' %}<div>{{ paper.news2 | markdownify }}</div>{% endif %}
+</div></div>
+{% if parity == 1 or forloop.last %}</div>{% endif %}
 {% endfor %}
-
-{% assign even_odd = number_printed | modulo: 2 %}
-{% if even_odd == 1 %}
-</div>
 {% endif %}
-
-<p> &nbsp; </p>
-
-
-## Patents
-<em>Milan P Allan, S Gröblacher, RA Norte, M Leeuwenhoek</em><br />Novel atomic force microscopy probes with phononic crystals<br /> PCT/NL20-20/050797 (2020)
-
-<em>Milan P Allan</em><br /> Methods of manufacturing superconductor and phononic elements <br /> <a href="https://patents.google.com/patent/US10439125B2/en?inventor=Milan+ALLAN&oq=inventor:(Milan+ALLAN)">US10439125B2 (2016)</a>
-
-## Full List of publications
-
-{% for publi in site.data.publist %}
-
-  {{ publi.title }} <br />
-  <em>{{ publi.authors }} </em><br /><a href="{{ publi.link.url }}">{{ publi.link.display }}</a>
-
+<h2 id="full-list-of-publications">Full Publication List</h2>
+{% for paper in publications %}
+<p class="publication-entry"><strong>{{ paper.title | escape }}</strong><br>{{ paper.authors | escape }}{% if paper.link.display and paper.link.display != '' %}<br>{% if paper.link.url and paper.link.url != '' %}<a href="{{ paper.link.url | escape }}">{{ paper.link.display | escape }}</a>{% else %}{{ paper.link.display | escape }}{% endif %}{% elsif paper.link.url and paper.link.url != '' %}<br><a href="{{ paper.link.url | escape }}">Read publication</a>{% endif %}</p>
 {% endfor %}
+{% endif %}
+</div>

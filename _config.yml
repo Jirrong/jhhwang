@@ -6,10 +6,10 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Academic Records of Jiho Hwang
+title: Jiho Hwang
 email: jhhwang16@snu.ac.kr
 description: > # this means to ignore newlines until "baseurl:"
-  Website of Jiho Hwang.
+  Jiho Hwang, undergraduate student in Chemistry at Seoul National University.
 baseurl: "/jhhwang"
 url: "https://jirrong.github.io"
 
@@ -69,6 +69,8 @@ exclude:
   - research.md
   - research 2.md
   - .DS_Store
+  - _pages/pictures.md
+  - downloads
 defaults:
   - scope:
       path: ''
@@ -76,6 +78,9 @@ defaults:
     values:
       layout: notebook-post
       author: Jiho Hwang
-      lang: ko
+      lang: en
       math: true
       toc: true
+
+# The public site and new blog posts default to English.
+lang: en

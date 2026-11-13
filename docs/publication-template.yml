@@ -1,0 +1,14 @@
+# Copy an entry into _data/publist.yml (replace [] for the first entry).
+# Fill the required title/authors, then set published: true when ready.
+# Entries are displayed newest first in the order you place them in the file.
+- title: ""
+  authors: ""
+  link:
+    url: ""       # DOI or publisher URL; optional when unavailable.
+    display: ""   # Example format: Journal, volume, pages (year).
+  image: ""       # Optional filename in images/pubpic/.
+  description: "" # Optional short summary; Markdown is supported.
+  highlight: 0    # 1 = selected-paper card and full list; 0 = full list only.
+  news1: ""       # Optional emphasized news; original template field.
+  news2: ""       # Optional additional news; Markdown is supported.
+  published: false
