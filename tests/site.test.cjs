@@ -167,3 +167,39 @@ test('an article without enough headings does not reserve an empty TOC column', 
   assert.equal(document.querySelector('.table-of-contents').hidden, true);
   assert.equal(document.querySelector('.notebook-layout').classList.contains('has-toc'), false);
 });
+
+test('research and resources have their own navigation and retain original wells', () => {
+  const { document } = parseHTML(fs.readFileSync('_site/research/index.html', 'utf8'));
+  const links = [...document.querySelectorAll('#navbar-collapse-1 a')];
+  assert.equal(links.find(a => a.textContent === 'Research').getAttribute('href'), '/jhhwang/research/');
+  assert.equal(links.find(a => a.textContent === 'Resources').getAttribute('href'), '/jhhwang/resources/');
+  assert.equal(document.querySelectorAll('.record-stack > .well.research-card').length, 2);
+  assert.match(document.querySelector('.research-card h2').textContent, /Reaction mechanisms/);
+  for (const link of document.querySelectorAll('.research-card h2 a')) {
+    assert.ok(fs.existsSync(`_site/${link.getAttribute('href').replace('/jhhwang/', '')}index.html`));
+  }
+  const { document: resources } = parseHTML(fs.readFileSync('_site/resources/index.html', 'utf8'));
+  assert.equal(resources.querySelectorAll('.resource-card').length, 0);
+  assert.match(resources.querySelector('.resource-empty').textContent, /No seminar materials have been published yet/);
+  assert.equal(resources.querySelector('#footer a[href="/jhhwang/guide/"]').textContent, 'Site guide');
+});
+
+test('research and seminar shortcuts prepare draft records and the next stacking order', () => {
+  const { document } = parseHTML(fs.readFileSync('_site/guide/index.html', 'utf8'));
+  vm.runInNewContext(source('site'), { document, URL, Intl, Date });
+  for (const [id, folder, filename, order] of [
+    ['new-research-link', '_research', 'project-title.md', 3],
+    ['new-resource-link', '_resources', 'seminar-title.md', 1]
+  ]) {
+    const url = new URL(document.getElementById(id).getAttribute('href'));
+    assert.equal(url.pathname, `/Jirrong/jhhwang/new/gh-pages/${folder}`);
+    assert.equal(url.searchParams.get('filename'), filename);
+    const content = url.searchParams.get('value');
+    assert.match(content, new RegExp(`\\norder: ${order}\\n`));
+    assert.match(content, /\npublished: false\n---\n/);
+    assert.match(content, /## References/);
+  }
+  const resource = new URL(document.getElementById('new-resource-link').getAttribute('href')).searchParams.get('value');
+  assert.match(resource, /url: \/assets\/resources\/your-seminar.pdf/);
+  assert.ok(document.querySelector('a[href="https://github.com/Jirrong/jhhwang/upload/gh-pages/assets/resources"]'));
+});

@@ -1,0 +1,4 @@
+{% assign record = include.record %}
+{% if record.event_date and record.event_date != '' or record.event and record.event != '' %}
+<p class="text-muted record-meta">{% if record.event_date and record.event_date != '' %}{{ record.event_date | escape }}{% if record.event and record.event != '' %} · {% endif %}{% endif %}{{ record.event | escape }}</p>
+{% endif %}
