@@ -15,7 +15,7 @@ published: true
 ## Research focus
 
 I investigated organic reaction mechanisms and thermochemistry as part of the
-Creative R&E program at Gyeonggi Science High School, supported by KOFAC.
+Creative R&E program at Gyeonggi Science High School.
 
 ## Methods
 
