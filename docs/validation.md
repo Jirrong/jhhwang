@@ -1,13 +1,11 @@
 # Validation
 
-The user's latest instruction permits rebuilding the CV and personal content while retaining the Allan Lab visual foundation.
+The latest user request is a PDF-first CV and wider, more polished blog/profile layout, with Junseo Lee's site as a reference.
 
-- **Theme:** 92 protected CSS, Sass, font, grid, and layout files match `f25f182c00dbd1e625bb355571cc352bb9f40612` byte for byte. The explicitly editable content/CV templates are recorded separately. No replacement screen theme is loaded; the added CV stylesheet is print-only.
-- **Content:** the CV record and publication schema pass validation. The initial publication list is empty. An in-memory fixture verifies original-style selected-paper cards, the full list, optional images/links, and draft exclusion without writing example papers to the live data.
-- **Build:** Jekyll 3.10 safe production build succeeds. Ten rendered pages pass route, local-link/anchor, image-alt, original-navigation/footer, stylesheet, RSS/search, sitemap, and source-exclusion checks.
-- **Behavior:** eleven Node DOM tests pass, including full-text/tag search, Unicode and reserved-character URLs, reset/empty/failure states, no-JavaScript navigation, Seoul-date English post templates, TOC, code copying, and CV printing.
-- **Language:** the current blog entry, controls, status/error messages, draft template, GitHub editor prefill, and writing/publication guide are English. The CV retains the author's Korean name as a proper name.
+- Original theme bases and fonts are checked against the original commit. The recorded Sass append adds only the authorized responsive/profile/notebook refinements.
+- The CV is a real two-page PDF exported from the existing record. Its page count, extracted text, embedded fonts, and rendered pages were inspected locally. Main CV links use the direct same-origin asset and a download attribute; `/cv/` retains a fallback.
+- Deployments validate the PDF and preserve it. They never run the optional exporter or overwrite an uploaded original.
+- Fourteen Node tests cover search/filter/history behavior, English templates, direct PDF links, the compatibility download, compiled width/responsive rules, code copying, and TOC layout with/without enough headings.
+- The Jekyll safe build, all ten HTML routes, local links/anchors, publication rendering, CV data, RSS/search/sitemap, and source exclusions are checked.
 
-The session does not offer browser-control tools; no screenshot or interactive viewport/print-layout comparison is claimed. Source and generated-document checks do not establish those browser results.
-
-Factual content follows the existing repository CV; its provenance and the unresolved Drive CV reference are recorded in `content-sources.md`.
+Browser-control tools were not offered in this environment. No interactive website viewport or browser-download dialog verification is claimed. The PDF pages were rendered and viewed; responsive website sizing is verified through the compiled stylesheet and DOM contracts.

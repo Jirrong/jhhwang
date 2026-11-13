@@ -104,5 +104,8 @@
     "_pages/publications.md": "992f6fc25eff2b658d657fbb3d3bab736d2b33f8",
     "_pages/404.md": "4dfa48449bd4a5cc319c9b6b1f50f874667ef12f"
   },
-  "policy": "Original theme CSS, Sass, fonts, grid, and remaining layouts stay unchanged. The user explicitly authorized CV reconstruction and personal content replacement in the listed templates."
+  "policy": "Original theme bases stay unchanged. The user explicitly authorized PDF-first CV navigation, responsive width/spacing improvements, and profile refinement using harris-junseo-lee.github.io as a reference. The declared Sass append contains these scoped layout changes.",
+  "approved_appends": {
+    "css/main.scss": "\n// Approved responsive layout refinements.\n@import \"site-layout\";\n"
+  }
 }

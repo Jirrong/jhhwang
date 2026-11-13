@@ -1,0 +1,193 @@
+// Responsive sizing and page-scoped refinements; inherit the Allan Lab theme.
+// Body is a flex column. An explicit width prevents its auto-margin content
+// container from shrinking to the intrinsic width of a short page.
+.container-fluid {
+  width: 100%;
+}
+
+.home-profile {
+  margin-top: 16px;
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+.home-profile .profile-contact {
+  margin-top: 18px;
+}
+.home-profile .profile-photo {
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.home-research-list li {
+  margin-bottom: 12px;
+  line-height: 1.65;
+}
+.home-posts li {
+  margin-bottom: 20px;
+}
+.home-posts .post-date {
+  display: block;
+  margin: 5px 0;
+}
+
+.notebook-page {
+  float: none;
+  width: 100%;
+  max-width: 1360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 35px;
+}
+.notebook-page #blog-tools {
+  margin-top: 28px;
+  margin-bottom: 25px;
+}
+.notebook-page .filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.notebook-page .filter-chip {
+  padding: 5px 10px;
+}
+.notebook-page #blog-search {
+  min-height: 42px;
+}
+.notebook-index .note-row {
+  border-top: 1px solid $gray-lighter;
+  padding: 22px 0;
+}
+.notebook-index .note-row h3 {
+  margin-top: 0;
+  line-height: 1.4;
+}
+.notebook-index .note-row > p {
+  line-height: 1.65;
+}
+.notebook-index .note-row .label {
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.notebook-article .post-header {
+  margin-bottom: 30px;
+}
+.notebook-article .post-title {
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+.notebook-article .post-meta {
+  margin: 16px 0;
+}
+.notebook-layout {
+  display: block;
+}
+.notebook-layout.has-toc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 42px;
+  align-items: start;
+}
+.notebook-content {
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.75;
+  overflow-wrap: break-word;
+}
+.notebook-content > p,
+.notebook-content > ul,
+.notebook-content > ol {
+  margin-bottom: 20px;
+}
+.notebook-content h2,
+.notebook-content h3 {
+  margin-top: 32px;
+  scroll-margin-top: 90px;
+}
+.notebook-content > :first-child {
+  margin-top: 0;
+}
+.notebook-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.notebook-content pre code {
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.notebook-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  font-size: 16px;
+}
+.notebook-content img {
+  max-width: 100%;
+  height: auto;
+}
+.notebook-content mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 0;
+}
+.notebook-toc {
+  position: sticky;
+  top: 90px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  margin-top: 0;
+  font-size: 14px;
+}
+.notebook-toc ul {
+  padding-left: 20px;
+}
+.notebook-toc li {
+  margin-bottom: 9px;
+  line-height: 1.5;
+}
+.notebook-pagination {
+  border-top: 1px solid $gray-lighter;
+  margin-top: 25px;
+  padding-top: 20px;
+}
+
+@media (max-width: 991px) {
+  .notebook-layout.has-toc {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .notebook-toc {
+    position: static;
+    order: -1;
+    width: 100%;
+    max-height: 260px;
+  }
+  .notebook-content {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .home-profile .profile-photo {
+    max-width: 220px;
+    margin-top: 20px;
+  }
+  .notebook-content {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .notebook-article .post-title {
+    font-size: 30px;
+  }
+  .notebook-page .input-group-btn .btn {
+    min-height: 42px;
+  }
+}

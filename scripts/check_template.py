@@ -13,6 +13,13 @@ for name, expected in manifest['files'].items():
         errors.append(f'missing original design file: {name}')
         continue
     data = path.read_bytes()
+    suffix = manifest.get('approved_appends', {}).get(name)
+    if suffix:
+        suffix = suffix.encode()
+        if not data.endswith(suffix):
+            errors.append(f'missing approved layout append: {name}')
+            continue
+        data = data[:-len(suffix)]
     actual = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
     if actual != expected:
         errors.append(f'original design changed: {name}')
@@ -20,4 +27,4 @@ if (root / 'assets/css/academic.css').exists():
     errors.append('redesign override stylesheet must not be present')
 if errors:
     raise SystemExit('\n'.join(errors))
-print(f"PASS: {len(manifest['files'])} original design files match {manifest['commit']} byte for byte.")
+print(f"PASS: {len(manifest['files'])} original theme bases match {manifest['commit']} byte for byte.")

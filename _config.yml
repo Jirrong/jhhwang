@@ -81,6 +81,10 @@ defaults:
       lang: en
       math: true
       toc: true
+      notebook_class: notebook-article
 
 # The public site and new blog posts default to English.
 lang: en
+
+# Same-origin asset used by every CV download link.
+cv_pdf: /assets/pdf/Jiho_Hwang_CV.pdf

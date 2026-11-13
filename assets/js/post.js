@@ -16,6 +16,8 @@
       item.append(link); tocLinks.append(item);
     });
     toc.hidden = false;
+    const layout = content.closest('.notebook-layout');
+    if (layout) layout.classList.add('has-toc');
   }
   content.querySelectorAll('pre').forEach(pre => {
     const code = pre.querySelector('code');
