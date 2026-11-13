@@ -38,7 +38,7 @@ function setupSearch(search = '', failIndex = false) {
 test('search starts from a shared Korean tag + full-text query URL', async () => {
   const p = setupSearch('?tag=%ED%99%94%ED%95%99&q=%EC%A0%84%EC%9D%B4%EC%83%81%ED%83%9C'); await settle();
   assert.deepEqual(p.visible(), ['/jhhwang/blog/molecules/']);
-  assert.match(p.document.getElementById('search-status').textContent, /본문까지 검색/);
+  assert.match(p.document.getElementById('search-status').textContent, /Full-text search/);
   assert.equal(p.document.querySelector('[data-tag="화학"]').getAttribute('aria-pressed'), 'true');
 });
 
@@ -62,7 +62,7 @@ test('no matches exposes an accessible empty state; reset restores all posts', a
 test('failed full-text download preserves title/tag search and reports its scope', async () => {
   const p = setupSearch('?q=분자', true); await settle();
   assert.deepEqual(p.visible(), ['/jhhwang/blog/molecules/']);
-  assert.match(p.document.getElementById('search-status').textContent, /제목·설명·태그 검색/);
+  assert.match(p.document.getElementById('search-status').textContent, /Searching titles, descriptions, and tags/);
 });
 
 test('browser back/forward re-reads the current query and selected tag', async () => {
@@ -84,7 +84,7 @@ test('all post links and navigation remain available before JavaScript', () => {
 test('original design files match the baseline exactly', () => {
   const { execFileSync } = require('node:child_process');
   const result = execFileSync('python3', ['scripts/check_template.py'], { encoding: 'utf8' });
-  assert.match(result, /100 original design files/);
+  assert.match(result, /92 original design files/);
 });
 
 test('new post shortcut pre-fills a valid filename and Markdown using the Seoul date', () => {
@@ -95,8 +95,8 @@ test('new post shortcut pre-fills a valid filename and Markdown using the Seoul 
   assert.equal(url.hostname, 'github.com');
   assert.equal(url.pathname, '/Jirrong/jhhwang/new/gh-pages/_posts');
   assert.equal(url.searchParams.get('filename'), '2026-11-13-your-title.md');
-  assert.match(url.searchParams.get('value'), /^---\ntitle: "글 제목"\ndate: 2026-11-13 00:00:00 \+0900/);
-  assert.match(url.searchParams.get('value'), /## 참고 문헌/);
+  assert.match(url.searchParams.get('value'), /^---\ntitle: "Post title"\ndate: 2026-11-13 00:00:00 \+0900/);
+  assert.match(url.searchParams.get('value'), /## References/);
 });
 
 test('post tools create a table of contents and copy only code text', async () => {
@@ -107,5 +107,27 @@ test('post tools create a table of contents and copy only code text', async () =
   assert.equal(document.querySelectorAll('#toc-links a').length, 2);
   document.querySelector('.copy-code').click(); await settle();
   assert.equal(copied, 'print("hello")\n');
-  assert.match(document.querySelector('[role="status"]').textContent, /복사/);
+  assert.match(document.querySelector('[role="status"]').textContent, /Code copied/);
+});
+
+test('CV print control opens printing without adding a screen-theme override', () => {
+  const { document } = parseHTML(fs.readFileSync('_site/cv/index.html', 'utf8'));
+  let printed = 0;
+  vm.runInNewContext(source('cv'), { document, window: { print: () => { printed += 1; } } });
+  const button = document.getElementById('print-cv');
+  assert.equal(button.hidden, false);
+  button.click(); assert.equal(printed, 1);
+  assert.equal(document.querySelector('link[href$="cv-print.css"]').getAttribute('media'), 'print');
+  assert.equal(document.querySelector('a[href="#"]'), null);
+  assert.ok(document.getElementById('education'));
+  assert.ok(document.getElementById('presentations'));
+});
+
+test('blog controls and writing template use English by default', () => {
+  const { document } = parseHTML(fs.readFileSync('_site/blog/index.html', 'utf8'));
+  assert.equal(document.querySelector('label[for="blog-search"]').textContent, 'Search posts');
+  assert.equal(document.getElementById('clear-search').textContent, 'Reset');
+  assert.match(document.getElementById('no-results').textContent, /No posts found/);
+  assert.match(fs.readFileSync('_drafts/academic-post-template.md', 'utf8'), /lang: en/);
+  assert.doesNotMatch(fs.readFileSync('_includes/writing-guide.md', 'utf8'), /[가-힣]/);
 });

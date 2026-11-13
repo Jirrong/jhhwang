@@ -1,13 +1,14 @@
 ---
 title: "News"
 layout: textlay
-excerpt: "Jiho Hwang at Seoul National University."
-sitemap: false
+excerpt: "News and announcements from Jiho Hwang."
 permalink: /allnews.html
 ---
 
 # News
 
 {% for article in site.data.news %}
-<p>{{ article.date }} <br> {{ article.headline | markdownify}}</p>
+## {{ article.date }}
+
+{{ article.headline }}
 {% endfor %}

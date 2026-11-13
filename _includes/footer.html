@@ -1,29 +1,19 @@
 <div id="footer" class="panel">
   <div class="panel-footer">
-	<div class="container-fluid">
-	  <div class="row">
-		<div class="col-sm-4">
-
-		  <p>&copy 2026 Jiho Hwang. Site powered by <a href="https://jekyllrb.com">Jekyll</a> with some <a href="https://getbootstrap.com/">Bootstrap</a> and <a href="https://bootswatch.com/">Bootswatch</a>, using the template of the <a href="https://www.allanlab.org/aboutwebsite.html"> Allan Lab</a>.</p>
-              
-
-
-		   <p>  </p><p>
-
-
-		</div>
-		<div class="col-sm-4">
-		<p>I am an undergraduate student of the <a href="https://chem.snu.ac.kr/">Department of Chemistry</a> at <a href="https://snu.ac.kr/"> Seoul National University (SNU)</a>.</p>
-		</div>
-		<div class="col-sm-4">
-		  Contact:<br />
-		  +82 1082393780 / 112-1101, 254, Cheongsa-ro, Seo-gu, Daejeon<br>
-		  jirrong0116@gmail.com / jhhwang16@snu.ac.kr <br />
-		</div>
-	  </div>
-	</div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <p>&copy; {{ site.time | date: '%Y' }} Jiho Hwang. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://getbootstrap.com/">Bootstrap</a>, and <a href="https://bootswatch.com/">Bootswatch</a>, using the <a href="https://www.allanlab.org/aboutwebsite.html">Allan Lab template</a>.</p>
+        </div>
+        <div class="col-sm-4">
+          <p>Undergraduate student<br><a href="https://chem.snu.ac.kr/">Department of Chemistry</a><br><a href="https://www.snu.ac.kr/">Seoul National University</a></p>
+        </div>
+        <div class="col-sm-4">
+          <p>Contact<br><a href="mailto:{{ site.email | escape }}">{{ site.email | escape }}</a><br><a href="{{ site.data.cv.identity.github }}">GitHub</a></p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="{{ site.url }}{{ site.baseurl }}/js/bootstrap.min.js"></script>
+<script src="{{ '/js/bootstrap.min.js' | relative_url }}"></script>

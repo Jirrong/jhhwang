@@ -1,0 +1,98 @@
+# Factual source: the repository CV at f25f182 (record dated 13 February 2026).
+# Update this record to change the CV, home-page summary, and research sections.
+identity:
+  name: Jiho Hwang
+  korean_name: 황지호
+  role: Undergraduate student in Chemistry
+  institution: Seoul National University
+  department: Department of Chemistry
+  department_url: https://chem.snu.ac.kr/
+  email: jhhwang16@snu.ac.kr
+  github: https://github.com/Jirrong
+  portrait: /images/profile.jpg
+  introduction: >-
+    I am an undergraduate student in the Department of Chemistry at Seoul National
+    University. My interests include organic synthesis, reaction mechanisms,
+    and computational chemistry.
+education:
+  - dates: March 2026–present
+    degree: B.S. in Chemistry
+    institution: Seoul National University
+    detail: In progress
+  - dates: March 2023–January 2026
+    degree: High School Diploma
+    institution: Gyeonggi Science High School
+    detail: 'GPA: 4.19 / 4.30'
+research_experience:
+  - dates: April 2025–January 2026
+    title: Creative R&E
+    institution: Gyeonggi Science High School · KOFAC
+    points:
+      - Computational investigation of organic reaction mechanisms and thermochemistry.
+      - Activation/strain analysis, energy decomposition analysis, and QTAIM.
+  - dates: March–November 2024
+    title: Advanced R&E in Chemistry
+    institution: Gyeonggi Science High School
+    points:
+      - Investigated polarity conversion using implicit-solvation models.
+      - Studied conformational fluctuations in a sterically constrained molecule.
+      - Performed excited-state calculations using TD-DFT and EOM-CC methods.
+research_interests:
+  - id: organic-synthesis
+    title: Organic synthesis
+    description: >-
+      Organic and asymmetric synthesis, natural-product synthesis,
+      organometallic catalysis, and synthetic methodology development.
+  - id: reaction-mechanisms
+    title: Reaction mechanisms and thermochemistry
+    description: >-
+      Reaction driving forces and the analysis of molecular reactivity using
+      activation/strain models, energy decomposition, and QTAIM.
+  - id: electronic-structure
+    title: Computational chemistry
+    description: >-
+      Density functional theory, coupled-cluster methods, conformational analysis,
+      and excited-state calculations.
+awards:
+  - date: February 2026
+    title: Silver Prize, 32nd Samsung Humantech Paper Awards
+    organization: High School Chemistry Division · Second place
+  - date: January 2026
+    title: Talent Award of Future Chemist
+    organization: The Korean Union of Chemical Science and Technology Societies
+  - date: January 2026
+    title: Certificate of Excellence in Chemistry
+    organization: Gyeonggi Science High School
+  - date: February 2025
+    title: National-team candidate, 57th International Chemistry Olympiad
+    organization: Korean Chemistry Olympiad Winter School · Top eight
+  - date: February 2025
+    title: Gold Prize, 31st Samsung Humantech Paper Awards
+    organization: High School Chemistry Division · First place
+presentations:
+  - title: Uncovering origins of the reaction driving force in an Aromatic Ring-Opening/Ring-Closing Metathesis cascade
+    authors: Jiho Hwang, Seungchan Hong, Doyoung Kim, and Jaehoon Min
+    events:
+      - date: March 2026
+        meeting: ACS Spring Meeting 2026
+        detail: ORGN poster presentation; selected for Sci-Mix.
+      - date: September 2025
+        meeting: Korean Chemical Society Fall Conference
+        detail: Future Chemist Research Presentation; poster.
+activities:
+  - dates: 2023–2025
+    title: President, Alchemist
+    institution: Experimental Chemistry Club, Gyeonggi Science High School
+  - dates: '2024'
+    title: Vice President, TeXperT and GSHS TeX Society
+    institution: Gyeonggi Science High School
+skills:
+  - label: Chemistry software
+    items: Gaussian, ORCA, CFOUR, Multiwfn
+  - label: Programming
+    items: Python, C++
+  - label: Languages
+    items: Korean (native), English, Chinese (HSK Level 4)
+affiliations:
+  - American Chemical Society · Undergraduate member
+  - ACS Division of Organic Chemistry (ORGN) · Undergraduate member

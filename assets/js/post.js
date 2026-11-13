@@ -25,8 +25,8 @@
     button.type = 'button'; button.className = 'btn btn-default btn-xs copy-code'; button.textContent = 'Copy code';
     const status = document.createElement('span'); status.className = 'sr-only'; status.setAttribute('role', 'status');
     button.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(code.textContent); button.textContent = 'Copied!'; status.textContent = '코드를 복사했습니다.'; }
-      catch (_) { const range = document.createRange(); range.selectNodeContents(code); const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range); status.textContent = '코드를 선택했습니다. Ctrl+C 또는 ⌘C로 복사하세요.'; }
+      try { await navigator.clipboard.writeText(code.textContent); button.textContent = 'Copied!'; status.textContent = 'Code copied.'; }
+      catch (_) { const range = document.createRange(); range.selectNodeContents(code); const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range); status.textContent = 'Code selected. Press Ctrl+C or Command+C to copy.'; }
       setTimeout(() => { button.textContent = 'Copy code'; status.textContent = ''; }, 3000);
     });
     controls.append(button, status); pre.insertAdjacentElement('afterend', controls);

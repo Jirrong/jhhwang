@@ -1,12 +1,13 @@
 ---
-title: "Guide"
+title: "Site Guide"
 layout: textlay
-excerpt: "블로그 글쓰기 안내"
-sitemap: false
+excerpt: "Writing blog posts and maintaining the CV and publication list."
 permalink: /guide/
+lang: en
 math: true
+sitemap: false
 ---
 
-# 블로그 글쓰기
+# Site Guide
 
 {% include writing-guide.md %}
