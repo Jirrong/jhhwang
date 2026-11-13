@@ -75,22 +75,16 @@ test('browser back/forward re-reads the current query and selected tag', async (
 test('all post links and navigation remain available before JavaScript', () => {
   const { document } = parseHTML(fs.readFileSync('_site/blog/index.html', 'utf8'));
   assert.ok(document.querySelector('#post-list .note-row h3 a'));
-  assert.ok(document.querySelector('#primary-navigation a'));
+  assert.ok(document.querySelector('#navbar-collapse-1 a'));
   assert.equal(document.getElementById('blog-tools').hidden, true);
-  assert.equal(document.querySelector('.nav-toggle').hidden, true);
+  assert.ok(document.querySelector('.navbar-toggle'));
+  assert.equal(document.querySelector('link[href*="academic.css"]'), null);
 });
 
-test('mobile menu updates aria-expanded and Escape closes it', () => {
-  const { document } = parseHTML(fs.readFileSync('_site/index.html', 'utf8'));
-  const events = {};
-  const original = document.addEventListener.bind(document);
-  document.addEventListener = (type, callback) => { events[type] = callback; original(type, callback); };
-  vm.runInNewContext(source('site'), { document });
-  const toggle = document.querySelector('.nav-toggle'); toggle.click();
-  assert.equal(toggle.getAttribute('aria-expanded'), 'true');
-  assert.equal(document.getElementById('primary-navigation').classList.contains('is-open'), true);
-  events.keydown({ key: 'Escape' });
-  assert.equal(toggle.getAttribute('aria-expanded'), 'false');
+test('original design files match the baseline exactly', () => {
+  const { execFileSync } = require('node:child_process');
+  const result = execFileSync('python3', ['scripts/check_template.py'], { encoding: 'utf8' });
+  assert.match(result, /100 original design files/);
 });
 
 test('new post shortcut pre-fills a valid filename and Markdown using the Seoul date', () => {

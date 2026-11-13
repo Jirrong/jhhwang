@@ -1,14 +1,25 @@
-<header class="site-header">
-  <div class="container-fluid header-inner">
-    <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Jiho Hwang — Home"><span class="brand-mark" aria-hidden="true">jh<span>.</span></span><span class="brand-name">Jiho Hwang<small>CHEMISTRY · SNU</small></span></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden><span aria-hidden="true">☰</span><span>Menu</span></button>
-    <nav id="primary-navigation" class="primary-navigation" aria-label="Main navigation">
-      {% assign current_url = page.url %}
-      <a href="{{ '/' | relative_url }}"{% if current_url == '/' %} aria-current="page"{% endif %}>Overview</a>
-      <a href="{{ '/interests/' | relative_url }}"{% if current_url == '/interests/' or current_url == '/publications/' %} aria-current="page"{% endif %}>Research</a>
-      <a href="{{ '/blog/' | relative_url }}"{% if current_url contains '/blog/' %} aria-current="page"{% endif %}>Notebook</a>
-      <a href="{{ '/cv/' | relative_url }}"{% if current_url == '/cv/' %} aria-current="page"{% endif %}>CV</a>
-      <a class="nav-contact" href="mailto:{{ site.email | escape }}">Say hello <span aria-hidden="true">↗</span></a>
-    </nav>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+	
+    <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}/">Academic Records of Jiho Hwang</a>
+	</div>
+	<div class="collapse navbar-collapse" id="navbar-collapse-1">
+	  <ul class="nav navbar-nav navbar-right">
+		<li><a href="{{ site.url }}{{ site.baseurl }}/">Home</a></li>
+		<li><a href="{{ site.url }}{{ site.baseurl }}/cv">CV</a></li>
+		<li><a href="{{ site.url }}{{ site.baseurl }}/publications">Publications</a></li>
+		<li><a href="{{ site.url }}{{ site.baseurl }}/interests">Research Interests</a></li>
+		<li><a href="{{ site.url }}{{ site.baseurl }}/blog">Blog Posts</a></li>
+		<li><a href="{{ site.url }}{{ site.baseurl }}/guide">Guide</a></li>
+	<!-- li><a href="{{ site.url }}{{ site.baseurl }}/pictures">(Pics)</a></li> -->	
+	  </ul>
+	</div>
   </div>
-</header>
+</div>

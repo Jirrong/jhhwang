@@ -31,7 +31,8 @@
     chips.forEach(chip => {
       const active = chip.dataset.tag === activeTag;
       chip.setAttribute('aria-pressed', String(active));
-      chip.classList.toggle('is-active', active);
+      chip.classList.toggle('btn-primary', active);
+      chip.classList.toggle('btn-default', !active);
     });
     status.textContent = `${count}개의 노트${activeTag ? ` · ${activeTag}` : ''}${terms.length ? (fullIndex ? ' · 본문까지 검색' : indexFailed ? ' · 제목·설명·태그 검색' : ' · 본문 검색 준비 중') : ''}`;
     empty.hidden = count !== 0;

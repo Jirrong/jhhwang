@@ -1,0 +1,17 @@
+---
+layout: textlay
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author | escape }}</span></span>{% endif %}</p>
+    <p>{% for tag in page.tags %}<a class="label label-default" href="{{ '/blog/' | relative_url }}?tag={{ tag | url_encode }}">{{ tag | escape }}</a> {% endfor %}</p>
+  </header>
+  {% if page.toc %}<aside class="well table-of-contents" aria-label="Table of contents" hidden><h4>Contents</h4><ul id="toc-links"></ul></aside>{% endif %}
+  <div id="post-content" class="post-content" itemprop="articleBody">{{ content }}</div>
+  <hr>
+  <p><a href="{{ '/blog/' | relative_url }}">← All blog posts</a> · <a href="mailto:{{ site.email | escape }}?subject={{ page.title | url_encode }}">이 글에 관해 연락하기</a></p>
+  <nav class="clearfix" aria-label="Other posts">{% if page.previous.url %}<p><a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | escape }}</a></p>{% endif %}{% if page.next.url %}<p><a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} →</a></p>{% endif %}</nav>
+</article>
+{% include notebook-math.html %}
+<script src="{{ '/assets/js/post.js' | relative_url }}" defer></script>
