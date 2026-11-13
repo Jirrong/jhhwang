@@ -70,7 +70,9 @@ An image and link are optional; missing fields do not create broken placeholders
 ## Update the CV and research sections
 {: #update-the-cv }
 
-Edit the [CV data file](https://github.com/{{ site.repository }}/edit/{{ site.github_branch }}/_data/cv.yml) to update education, research experience, honors, presentations, skills, and affiliations. The home and research pages use the same record. The CV's **Print / Save as PDF** button opens the browser's print dialog.
+The **CV** menu downloads the PDF directly. Replace `assets/pdf/Jiho_Hwang_CV.pdf` with your own updated PDF to keep every CV link working. Deployments preserve this file and never regenerate it automatically.
+
+The initial PDF was exported from the existing website CV record. An optional builder, `scripts/build_cv_pdf.py`, can export that record again when explicitly run. `_data/cv.yml` continues to hold the factual profile and research information used on the site; keep it consistent with your PDF.
 
 [Read the blog →]({{ '/blog/' | relative_url }})
 

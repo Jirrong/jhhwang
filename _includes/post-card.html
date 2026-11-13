@@ -4,5 +4,4 @@
 <p class="text-muted small"><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: '%Y-%m-%d' }}</time>{% if note.categories.size > 0 %} · {{ note.categories | join: ' / ' | escape }}{% endif %}</p>
 <p>{{ note.description | default: note.excerpt | strip_html | normalize_whitespace | truncate: 170 }}</p>
 <p>{% for tag in note.tags %}<a class="label label-default" href="{{ '/blog/' | relative_url }}?tag={{ tag | url_encode }}">{{ tag | escape }}</a> {% endfor %}</p>
-<hr>
 </article>

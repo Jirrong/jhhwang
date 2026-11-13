@@ -9,3 +9,5 @@
 The intended Google Drive CV has not been positively identified. Other people's Drive CVs were not used. No unsupported MSE/Physics degree, research-group leadership, journal publication, ORCID/Scholar/LinkedIn profile, or new research result has been added.
 
 Conference contributions are kept under presentations. `_data/publist.yml` is empty until an actual publication is supplied; the drafting example lives under docs and is excluded from the built site. Initial blog copy introduces the blog and does not describe new findings.
+
+The latest PDF-first revision exports the existing website CV record to `assets/pdf/Jiho_Hwang_CV.pdf`; it is a generated version of that record, not a retrieved Google Drive original. The PDF can be replaced directly by the author. The reference at https://harris-junseo-lee.github.io/ is used for presentation/interaction ideas only, with no biographical or publication content copied.

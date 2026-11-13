@@ -1,9 +1,10 @@
 ---
 title: "Blog"
-layout: textlay
+layout: notebook
 excerpt: "Notes on chemistry, papers, calculations, and methods by Jiho Hwang."
 permalink: /blog/
 lang: en
+notebook_class: notebook-index
 ---
 
 # Blog

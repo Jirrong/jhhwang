@@ -81,10 +81,10 @@ test('all post links and navigation remain available before JavaScript', () => {
   assert.equal(document.querySelector('link[href*="academic.css"]'), null);
 });
 
-test('original design files match the baseline exactly', () => {
+test('original theme bases and approved layout additions satisfy the theme guard', () => {
   const { execFileSync } = require('node:child_process');
   const result = execFileSync('python3', ['scripts/check_template.py'], { encoding: 'utf8' });
-  assert.match(result, /92 original design files/);
+  assert.match(result, /92 original theme bases/);
 });
 
 test('new post shortcut pre-fills a valid filename and Markdown using the Seoul date', () => {
@@ -100,27 +100,39 @@ test('new post shortcut pre-fills a valid filename and Markdown using the Seoul 
 });
 
 test('post tools create a table of contents and copy only code text', async () => {
-  const { document } = parseHTML('<html><body><div id="post-content"><h2 id="question">질문</h2><h3>분석</h3><pre><code>print("hello")\n</code></pre></div><aside class="table-of-contents" hidden><nav id="toc-links"></nav></aside></body></html>');
+  const { document } = parseHTML('<html><body><div class="notebook-layout"><div id="post-content"><h2 id="question">질문</h2><h3>분석</h3><pre><code>print("hello")\n</code></pre></div><aside class="table-of-contents" hidden><nav id="toc-links"></nav></aside></div></body></html>');
   let copied = '';
   vm.runInNewContext(source('post'), { document, window: {}, navigator: { clipboard: { writeText: async text => { copied = text; } } }, setTimeout: () => {} });
   assert.equal(document.querySelector('.table-of-contents').hidden, false);
+  assert.ok(document.querySelector('.notebook-layout').classList.contains('has-toc'));
   assert.equal(document.querySelectorAll('#toc-links a').length, 2);
   document.querySelector('.copy-code').click(); await settle();
   assert.equal(copied, 'print("hello")\n');
   assert.match(document.querySelector('[role="status"]').textContent, /Code copied/);
 });
 
-test('CV print control opens printing without adding a screen-theme override', () => {
+test('CV menu and profile links download the actual PDF without a JavaScript dependency', () => {
+  const { document } = parseHTML(fs.readFileSync('_site/index.html', 'utf8'));
+  const nav = [...document.querySelectorAll('#navbar-collapse-1 a')].find(link => link.textContent === 'CV');
+  assert.equal(nav.getAttribute('href'), '/jhhwang/assets/pdf/Jiho_Hwang_CV.pdf');
+  assert.equal(nav.getAttribute('download'), 'Jiho_Hwang_CV.pdf');
+  assert.equal(nav.getAttribute('type'), 'application/pdf');
+  const profile = document.querySelector('.profile-contact a[download]');
+  assert.equal(profile.getAttribute('href'), nav.getAttribute('href'));
+  const data = fs.readFileSync('_site/assets/pdf/Jiho_Hwang_CV.pdf');
+  assert.equal(data.subarray(0, 5).toString(), '%PDF-');
+  assert.match(data.subarray(-20).toString(), /%%EOF/);
+});
+
+test('legacy CV page triggers a single PDF download and retains a normal fallback link', () => {
   const { document } = parseHTML(fs.readFileSync('_site/cv/index.html', 'utf8'));
-  let printed = 0;
-  vm.runInNewContext(source('cv'), { document, window: { print: () => { printed += 1; } } });
-  const button = document.getElementById('print-cv');
-  assert.equal(button.hidden, false);
-  button.click(); assert.equal(printed, 1);
-  assert.equal(document.querySelector('link[href$="cv-print.css"]').getAttribute('media'), 'print');
-  assert.equal(document.querySelector('a[href="#"]'), null);
-  assert.ok(document.getElementById('education'));
-  assert.ok(document.getElementById('presentations'));
+  const link = document.getElementById('cv-download-link');
+  let clicks = 0; link.click = () => { clicks += 1; };
+  vm.runInNewContext(source('cv-download'), { document });
+  assert.equal(clicks, 1);
+  assert.equal(link.getAttribute('download'), 'Jiho_Hwang_CV.pdf');
+  assert.equal(link.getAttribute('href'), '/jhhwang/assets/pdf/Jiho_Hwang_CV.pdf');
+  assert.equal(document.getElementById('education'), null);
 });
 
 test('blog controls and writing template use English by default', () => {
@@ -130,4 +142,28 @@ test('blog controls and writing template use English by default', () => {
   assert.match(document.getElementById('no-results').textContent, /No posts found/);
   assert.match(fs.readFileSync('_drafts/academic-post-template.md', 'utf8'), /lang: en/);
   assert.doesNotMatch(fs.readFileSync('_includes/writing-guide.md', 'utf8'), /[가-힣]/);
+});
+
+test('compiled CSS makes the outer container fill the screen and provides a wide responsive notebook', () => {
+  const { document } = parseHTML(fs.readFileSync('_site/blog/index.html', 'utf8'));
+  const styleURL = new URL(document.querySelector('link[rel="stylesheet"]').getAttribute('href'));
+  assert.match(styleURL.searchParams.get('v'), /^\d+$/);
+  const cssom = require('cssom');
+  const sheet = cssom.parse(fs.readFileSync('_site/css/main.css', 'utf8'));
+  const value = (selector, property) => [...sheet.cssRules].filter(rule => rule.selectorText === selector).map(rule => rule.style.getPropertyValue(property)).filter(Boolean).at(-1);
+  assert.equal(value('.container-fluid', 'width'), '100%');
+  assert.equal(value('.notebook-page', 'max-width'), '1360px');
+  assert.equal(value('.notebook-layout.has-toc', 'grid-template-columns'), 'minmax(0, 1fr) 240px');
+  assert.equal(value('.notebook-content', 'min-width'), '0');
+  assert.equal(value('.notebook-content pre code', 'white-space'), 'pre');
+  assert.equal(value('.home-profile .profile-photo', 'width'), '100%');
+  const mobile = [...sheet.cssRules].find(rule => rule.conditionText === '(max-width: 991px)' && [...rule.cssRules].some(r => r.selectorText === '.notebook-layout.has-toc'));
+  assert.ok(mobile, 'the TOC must stack rather than narrow mobile text');
+});
+
+test('an article without enough headings does not reserve an empty TOC column', () => {
+  const { document } = parseHTML('<html><body><div class="notebook-layout"><div id="post-content"><h2>One section</h2><p>Text.</p></div><aside class="table-of-contents" hidden><ul id="toc-links"></ul></aside></div></body></html>');
+  vm.runInNewContext(source('post'), { document });
+  assert.equal(document.querySelector('.table-of-contents').hidden, true);
+  assert.equal(document.querySelector('.notebook-layout').classList.contains('has-toc'), false);
 });
