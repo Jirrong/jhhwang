@@ -1,42 +1,75 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-title: Academic Records of Jiho Hwang
+title: Jiho Hwang
+tagline: Chemistry, questions, and field notes.
+description: >-
+  Jiho Hwang's academic home. Chemistry at Seoul National University,
+  research interests, and an open notebook of papers, calculations, and ideas.
+name: Jiho Hwang
 email: jhhwang16@snu.ac.kr
-description: > # this means to ignore newlines until "baseurl:"
-  Website of Jiho Hwang.
-baseurl: "/jhhwang"
-url: "https://jirrong.github.io"
-
-include:
-  - .htaccess
-  - _pages
-
+url: https://jirrong.github.io
+baseurl: /jhhwang
+lang: en
+timezone: Asia/Seoul
+repository: Jirrong/jhhwang
+author:
+  name: Jiho Hwang
+  email: jhhwang16@snu.ac.kr
+  uri: https://github.com/Jirrong
+github_url: https://github.com/Jirrong
+github_branch: gh-pages
+permalink: /blog/:year/:month/:day/:title/
+future: false
+show_drafts: false
+include: [_pages]
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - vendor
+  - node_modules
+  - scripts
+  - docs
+  - tests
+  - .bundle
+  - images
+  - downloads
+  - research.md
+  - research 2.md
+  - _pages/Guide.md
+  - _pages/allnews.md
+  - _pages/pictures.md
+  - .DS_Store
+  - package.json
+  - package-lock.json
+plugins: [jekyll-feed, jekyll-sitemap]
+whitelist: [jekyll-feed, jekyll-sitemap]
+feed:
+  path: feed.xml
+defaults:
+  - scope:
+      path: ''
+      type: posts
+    values:
+      layout: post
+      author: Jiho Hwang
+      lang: ko
+      math: true
+      toc: true
+  - scope:
+      path: ''
+      type: pages
+    values:
+      layout: page
 sass:
   sass_dir: _sass
-
-# Conversion
+  style: compressed
 markdown: kramdown
 highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
-
-
-
-# Markdown Processing
 kramdown:
   input: GFM
   hard_wrap: false
   auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
-  parse_block_html: true # default for kramdown is false. This will enable using Markdown links
+  syntax_highlighter: rouge
+  parse_block_html: false
+  math_engine: mathjax
+excerpt_separator: '<!--more-->'

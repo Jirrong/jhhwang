@@ -1,41 +1,13 @@
 ---
-title: "Research Interests"
-layout: textlay
-excerpt: "Research Interests"
-sitemap: false
+title: Research & interests
+layout: page
+eyebrow: MOLECULES, MECHANISMS & METHODS
+subtitle: The questions I’m learning to ask.
 permalink: /interests/
+wide: true
 ---
-
-# Research Interests
-
-**I am currently an undergraduate student studying chemistry, **
-
-We are  looking for new group members with passion, talent, and grit!
-
-You will have the chance to work on the grand challenges of condensed matter physics, often at the interface of instrumental design and new physics. You will be involved in determining the important and interesting questions, creating and improving instrumental setups, performing measurements, and making discoveries.
-
-### Synthetic Organic Chemistry
-
-You find the past job openings here:
-[Opening 1]({{ site.baseurl }}/downloads/GeneralPostdoc_2019_v01.pdf),
-[Opening 2]({{ site.baseurl }}/downloads/PPMS_PhD_2019_v01.pdf),
-[Opening 3]({{ site.baseurl }}/downloads/PD.pdf),
-[Opening 4]({{ site.baseurl }}/downloads/PHD1.pdf),
-[Opening 5]({{ site.baseurl }}/downloads/PHD2.pdf).
-
-### Applications for PhD and Postdoc positions
-If you are interested in working with us as a PhD student or postdoc, please send me an [email](mailto:milan.allan@gmail.com). State briefly why you are interested and attach a CV, including information about the grades you had as an undergraduate. No need for a separate cover letter or certificates. **Important**: please insert _"Application PhD"_ or _"Application Postdoc"_ in the subject line. If you are applying to a specific advertisement, note this in your email.
-
-We especially welcome postdocs with fellowships. I'd be happy to support you, also after you apply to our group. Take a look at the [veni fellowship](https://www.nwo.nl/en/calls/nwo-talent-programme-veni-science-domain) or the Marie Curie fellowship (currently closed, next deadline probably Fall 2021, [here is last years call]({{ site.baseurl }}/downloads/h2020-wp1820-msca_en.pdf)). In many country, there are also fellowships available for outdoing postdocs.**
-
-
-### Master projects for Leiden University students
-If you are a Master student at Leiden University looking for a Master project, contact me (or any group member) per email or stop by my office.
-
-### Bsc / Master students from elsewhere
-If you are interested in pursuing a Master degree at Leiden University, see [mastersinleiden.nl](http://www.mastersinleiden.nl/programmes/physics/en/introduction). Sometimes, we take master students or summer interns if we get exceptional applicants (this usually means very good grades and a personal recommendation).
-
-
-<figure>
-<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/Gallery/DSC_0696.jpg" width="95%">
-</figure>
+<p class="research-intro">My interests connect synthetic organic chemistry with tools for understanding molecular structure, reactivity, and reaction energetics.</p>
+<div class="research-detail-list">{% for area in site.data.research %}<section class="research-detail" id="area-{{ area.number }}"><span class="item-number">{{ area.number }}</span><div><h2>{{ area.title }}</h2><p class="research-subtitle">{{ area.subtitle }}</p><p>{{ area.description }}</p><div class="tag-list">{% for topic in area.topics %}<span class="tag">{{ topic }}</span>{% endfor %}</div></div></section>{% endfor %}</div>
+<section class="content-section"><p class="eyebrow">SELECTED EXPERIENCE</p><h2>Learning through research.</h2><div class="timeline"><div class="timeline-item"><p class="timeline-date">APR 2025 — JAN 2026</p><div><h3>Creative R&E</h3><p class="timeline-place">Gyeonggi Science High School · KOFAC</p><p>Computational investigation of organic reaction mechanisms and thermochemistry using activation/strain analysis, energy decomposition analysis, and QTAIM.</p></div></div><div class="timeline-item"><p class="timeline-date">MAR — NOV 2024</p><div><h3>Advanced R&E in Chemistry</h3><p class="timeline-place">Gyeonggi Science High School</p><p>Implicit-solvation models, conformational analysis of a sterically constrained molecule, and excited-state calculations with TD-DFT and EOM-CC methods.</p></div></div></div></section>
+<div class="inline-callout"><div><h2>Research output</h2><p>Conference contributions and a record of work.</p></div><a class="text-link" href="{{ '/publications/' | relative_url }}">View research output →</a></div>
+<p class="quiet-note">Experience details follow the CV currently maintained on this site.</p>
