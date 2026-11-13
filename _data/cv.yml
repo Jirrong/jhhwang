@@ -1,0 +1,53 @@
+education:
+  - period: MAR 2026 — PRESENT
+    title: B.S. in Chemistry
+    place: Seoul National University
+    notes: [In progress]
+  - period: MAR 2023 — JAN 2026
+    title: High School Diploma
+    place: Gyeonggi Science High School
+    notes:
+      - 'GPA: 4.19 / 4.30'
+      - Certificate of Excellence in Chemistry
+      - President, Alchemist Experimental Chemistry Club (2023–2025)
+      - Vice President, TeXperT and GSHS TeX Society (2024)
+experience:
+  - period: APR 2025 — JAN 2026
+    title: Creative R&E
+    place: Gyeonggi Science High School · KOFAC
+    notes:
+      - Computational organic reaction mechanisms and thermochemistry
+      - Activation/strain analysis, energy decomposition analysis, and QTAIM
+  - period: MAR — NOV 2024
+    title: Advanced R&E in Chemistry
+    place: Gyeonggi Science High School
+    notes:
+      - Implicit-solvation analysis of polarity conversion ranges of SPS
+      - Conformational analysis of a sterically constrained molecule
+      - Excited-state calculations using TD-DFT and EOM-CC methods
+awards:
+  - period: FEB 2026
+    title: Silver Prize, 32nd Samsung Humantech Paper Awards
+    place: High School Chemistry Division · 2nd place
+  - period: JAN 2026
+    title: Talent Award of Future Chemist
+    place: The Korean Union of Chemical Science and Technology Societies
+  - period: JAN 2026
+    title: Certificate of Excellence in Chemistry
+    place: Gyeonggi Science High School
+  - period: FEB 2025
+    title: National Representative Candidate, 57th IChO
+    place: Korean Chemistry Olympiad Winter School · Top 8
+  - period: FEB 2025
+    title: Gold Prize, 31st Samsung Humantech Paper Awards
+    place: High School Chemistry Division · 1st place
+skills:
+  - label: Chemistry software
+    value: Gaussian, ORCA, CFOUR, Multiwfn
+  - label: Programming
+    value: Python, C++
+  - label: Languages
+    value: Korean, English, Chinese (HSK Level 4)
+affiliations:
+  - American Chemical Society · Undergraduate Member
+  - ACS Division of Organic Chemistry (ORGN) · Undergraduate Member

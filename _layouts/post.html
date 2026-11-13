@@ -1,15 +1,18 @@
 ---
 layout: default
 ---
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+<div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+<article class="post-shell">
+  <header class="post-heading">
+    <a class="back-link" href="{{ '/blog/' | relative_url }}">← All notes</a>
+    <p class="eyebrow">{% if page.categories.size > 0 %}{{ page.categories | join: ' / ' | escape }}{% else %}Notebook{% endif %}</p>
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.description %}<p class="page-lead">{{ page.description | escape }}</p>{% endif %}
+    {% assign words = content | strip_html | number_of_words %}{% assign minutes = words | plus: 199 | divided_by: 200 | at_least: 1 %}
+    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d %B %Y' }}</time><span aria-hidden="true">·</span>{{ page.author | default: site.name | escape }}<span aria-hidden="true">·</span>{{ minutes }} min read</p>
+    <div class="tag-list">{% for tag in page.tags %}<a class="tag" href="{{ '/blog/' | relative_url }}?tag={{ tag | url_encode }}">{{ tag | escape }}</a>{% endfor %}</div>
   </header>
-
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
-
+  <div class="reading-layout"><div id="post-content" class="post-content prose">{{ content }}</div>{% if page.toc %}<aside class="table-of-contents" aria-label="Table of contents" hidden><p class="eyebrow">ON THIS PAGE</p><nav id="toc-links" aria-label="Article sections"></nav></aside>{% endif %}</div>
+  <footer class="post-end"><p>Thanks for reading.</p><a href="mailto:{{ site.email | escape }}?subject={{ page.title | url_encode }}">Discuss this note via email ↗</a><a href="{{ '/feed.xml' | relative_url }}">Follow via RSS ↗</a></footer>
+  <nav class="post-pagination" aria-label="Other posts">{% if page.previous.url %}<a href="{{ page.previous.url | relative_url }}"><small>← PREVIOUS NOTE</small><strong>{{ page.previous.title | escape }}</strong></a>{% endif %}{% if page.next.url %}<a href="{{ page.next.url | relative_url }}"><small>NEXT NOTE →</small><strong>{{ page.next.title | escape }}</strong></a>{% endif %}</nav>
 </article>

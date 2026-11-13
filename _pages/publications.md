@@ -1,67 +1,12 @@
 ---
-title: "Publications"
-layout: gridlay
-excerpt: "Publications."
-sitemap: false
+title: Research output
+layout: page
+eyebrow: CONTRIBUTIONS & PRESENTATIONS
+subtitle: A growing record of research.
 permalink: /publications/
 ---
-
-
-# Publications
-
-## Personal highlights
-
-**At the end of this page, you can find the [full list of publications and patents](#full-list-of-publications). All papers are also available on [arXiv](https://arxiv.org/search/?searchtype=author&query=Allan%2C+M+P).**
-
-{% assign number_printed = 0 %}
-{% for publi in site.data.publist %}
-
-{% assign even_odd = number_printed | modulo: 2 %}
-{% if publi.highlight == 1 %}
-
-{% if even_odd == 0 %}
-<div class="row">
-{% endif %}
-
-<div class="col-sm-6 clearfix">
- <div class="well">
-  <pubtit>{{ publi.title }}</pubtit>
-  <img src="{{ site.url }}{{ site.baseurl }}/images/pubpic/{{ publi.image }}" class="img-responsive" width="33%" style="float: left" />
-  <p>{{ publi.description }}</p>
-  <p><em>{{ publi.authors }}</em></p>
-  <p><strong><a href="{{ publi.link.url }}">{{ publi.link.display }}</a></strong></p>
-  <p class="text-danger"><strong> {{ publi.news1 }}</strong></p>
-  <p> {{ publi.news2 }}</p>
- </div>
-</div>
-
-{% assign number_printed = number_printed | plus: 1 %}
-
-{% if even_odd == 1 %}
-</div>
-{% endif %}
-
-{% endif %}
-{% endfor %}
-
-{% assign even_odd = number_printed | modulo: 2 %}
-{% if even_odd == 1 %}
-</div>
-{% endif %}
-
-<p> &nbsp; </p>
-
-
-## Patents
-<em>Milan P Allan, S Gröblacher, RA Norte, M Leeuwenhoek</em><br />Novel atomic force microscopy probes with phononic crystals<br /> PCT/NL20-20/050797 (2020)
-
-<em>Milan P Allan</em><br /> Methods of manufacturing superconductor and phononic elements <br /> <a href="https://patents.google.com/patent/US10439125B2/en?inventor=Milan+ALLAN&oq=inventor:(Milan+ALLAN)">US10439125B2 (2016)</a>
-
-## Full List of publications
-
-{% for publi in site.data.publist %}
-
-  {{ publi.title }} <br />
-  <em>{{ publi.authors }} </em><br /><a href="{{ publi.link.url }}">{{ publi.link.display }}</a>
-
-{% endfor %}
+<p>Conference contributions listed in my current CV.</p>
+<section class="output-entry"><span class="output-type">CONFERENCE CONTRIBUTION · 2026</span><h2>Uncovering origins of the reaction driving force in an Aromatic Ring-Opening/Ring-Closing Metathesis cascade</h2><p>Jiho Hwang, Seungchan Hong, Doyoung Kim, and Jaehoon Min</p><p><em>SciMeetings / ACS Spring Meeting 2026</em></p><p>ORGN poster presentation · Sci-Mix selection</p></section>
+<section class="content-section"><h2>Other presentations</h2><div class="timeline-item"><p class="timeline-date">SEP 2025</p><div><h3>Korean Chemical Society Fall Conference</h3><p>Future Chemist Research Presentation · Poster</p></div></div></section>
+<p class="quiet-note">Conference contributions are listed separately from journal articles. This record follows the CV dated {{ site.data.profile.cv_updated }}.</p>
+<a class="text-link" href="{{ '/cv/' | relative_url }}">Full curriculum vitae →</a>

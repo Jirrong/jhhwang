@@ -1,70 +1,20 @@
 ---
-title: "Home"
+title: Home
 layout: homelay
-excerpt: "Home"
-sitemap: false
 permalink: /
+description: Jiho Hwang's academic home — chemistry at Seoul National University, research interests, and an open academic notebook.
 ---
-
-**This is the Personal Academic Website of Jiho Hwang**, an undergraduate student at the [Department of Chemistry, Seoul National University(SNU)](https://chem.snu.ac.kr/)!
-
-We have two overarching goals: first, 
-**to understand quantum materials**, including strange metals, high-temperature superconductors, and quantum critical electron matter. Second, **to make novel and useful materials** that never existed before, like possible room-temperature superconductors. 
-To achieve these goals, we develop new quantum sensing and quantum imaging instrumentation to obtain the key quantum mechanical degrees of freedom. We want to build the perfect instruments to answer the scientific questions we deem most important. 
-
-<div markdown="0" id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="hover" >
-    <!-- Menu -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel" data-slide-to="1"></li>
-        <li data-target="#carousel" data-slide-to="2"></li>
-        <li data-target="#carousel" data-slide-to="3"></li>
-        <li data-target="#carousel" data-slide-to="4"></li>
-        <li data-target="#carousel" data-slide-to="5"></li>
-        <li data-target="#carousel" data-slide-to="6"></li>
-    </ol>
-
-    <!-- Items -->
-    <div class="carousel-inner" markdown="0">
-        <div class="item active">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/QPI_Rh.jpg" alt="Slide 1" />
-        </div>
-        <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/SmartTipSide.jpg" alt="Slide 2" />
-        </div>
-        <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/SaphireSTM2.jpg" alt="Slide 3" />
-        </div>
-        <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/lab.jpg" alt="Slide 4" />
-        </div>
-        <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/Fig_Science_Web.jpg" alt="Slide 5" />
-        </div>       
-         <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider7001400/BSCCO2gap2.jpg" alt="Slide 6" />
-        </div>
-    </div>
-  <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
-We are currently building up our instruments right in the center of Munich, in the *Sommerfeldkeller*, where Sommerfeld and Röntgen worked. We will exchange ideas with world class groups working in quantum physics, cold-atom many-body physics, and 2d quantum materials. We are also a proud member of the [SuperC consortium](https://superc2033.com/our-team/).
-
-**We are looking for passionate new PhD students, Postdocs, and Master students to join the team** [(more info)](https://www.allanlab.org/vacancies) **!**
-
-
-
-
-
-<figure class="fifth">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuscience.svg" style="height: 53px">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/snuchem.png" style="height: 58px">
-</figure>
+<section class="home-hero row">
+  <div class="col-md-8 hero-copy">
+    <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> {{ site.data.profile.role }} · SNU</p>
+    <h1>Jiho Hwang<span class="accent-dot">.</span><span class="hero-korean" lang="ko">황지호</span></h1>
+    <p class="hero-statement">Chemistry, questions,<br>and the space in between.</p>
+    <p class="hero-intro">{{ site.data.profile.intro }}</p>
+    <div class="hero-actions"><a class="button button-primary" href="{{ '/interests/' | relative_url }}">Explore my interests <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ '/cv/' | relative_url }}">Curriculum vitae <span aria-hidden="true">→</span></a></div>
+  </div>
+  <aside class="col-md-4 hero-aside" aria-label="Profile"><div class="profile-frame"><img src="{{ '/assets/images/jiho-hwang.jpg' | relative_url }}" alt="Jiho Hwang" width="520" height="650" fetchpriority="high"><span class="photo-corner" aria-hidden="true">JH / 01</span></div><div class="profile-caption"><span>Seoul National University</span><span>Seoul, KR <span aria-hidden="true">↗</span></span></div></aside>
+</section>
+<section class="home-about section-rule" aria-labelledby="about-heading"><div class="section-label"><p class="eyebrow">A LITTLE CONTEXT</p><h2 id="about-heading">A place to connect<br>the dots.</h2></div><div class="about-copy"><p>{{ site.data.profile.about }}</p><p>I’m especially drawn to how molecules are made, why reactions take the paths they do, and what computation can help us see.</p><a class="text-link" href="mailto:{{ site.email }}">Get in touch <span aria-hidden="true">↗</span></a></div></section>
+<section class="research-section section-rule" aria-labelledby="research-heading"><div class="section-heading"><div><p class="eyebrow">RESEARCH INTERESTS</p><h2 id="research-heading">Three ways into a question.</h2></div><a class="text-link" href="{{ '/interests/' | relative_url }}">Research & experience <span aria-hidden="true">↗</span></a></div><div class="research-grid">{% for area in site.data.research %}<a class="research-item" href="{{ '/interests/' | relative_url }}#area-{{ area.number }}"><span class="item-number">{{ area.number }}</span><h3>{{ area.title }}</h3><p>{{ area.subtitle }}</p><span class="item-arrow" aria-hidden="true">↗</span></a>{% endfor %}</div></section>
+<section class="notebook-section section-rule" aria-labelledby="notebook-heading"><div class="section-heading"><div><p class="eyebrow">THE OPEN NOTEBOOK</p><h2 id="notebook-heading">Notes along the way.</h2><p class="section-description" lang="ko">논문에서 만난 질문, 계산하며 배운 것, 아직 정리 중인 생각들.</p></div><a class="text-link" href="{{ '/blog/' | relative_url }}">All notes <span aria-hidden="true">→</span></a></div><div class="home-post-list">{% for post in site.posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}</div></section>
+<section class="contact-strip"><p>Have a question or an idea to share?</p><a href="mailto:{{ site.email }}">Let’s talk chemistry. <span aria-hidden="true">↗</span></a></section>
