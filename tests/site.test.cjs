@@ -145,6 +145,9 @@ test('blog controls and writing template use English by default', () => {
 });
 
 test('compiled CSS makes the outer container fill the screen and provides a wide responsive notebook', () => {
+  const { document } = parseHTML(fs.readFileSync('_site/blog/index.html', 'utf8'));
+  const styleURL = new URL(document.querySelector('link[rel="stylesheet"]').getAttribute('href'));
+  assert.match(styleURL.searchParams.get('v'), /^\d+$/);
   const cssom = require('cssom');
   const sheet = cssom.parse(fs.readFileSync('_site/css/main.css', 'utf8'));
   const value = (selector, property) => [...sheet.cssRules].filter(rule => rule.selectorText === selector).map(rule => rule.style.getPropertyValue(property)).filter(Boolean).at(-1);

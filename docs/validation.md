@@ -2,7 +2,7 @@
 
 The latest user request is a PDF-first CV and wider, more polished blog/profile layout, with Junseo Lee's site as a reference.
 
-- Original theme bases and fonts are checked against the original commit. The recorded Sass append adds only the authorized responsive/profile/notebook refinements.
+- Original theme bases and fonts are checked against the original commit. The recorded Sass append adds the authorized responsive/profile/notebook refinements; the head substitution adds a build timestamp so cached CSS is refreshed.
 - The CV is a real two-page PDF exported from the existing record. Its page count, extracted text, embedded fonts, and rendered pages were inspected locally. Main CV links use the direct same-origin asset and a download attribute; `/cv/` retains a fallback.
 - Deployments validate the PDF and preserve it. They never run the optional exporter or overwrite an uploaded original.
 - Fourteen Node tests cover search/filter/history behavior, English templates, direct PDF links, the compatibility download, compiled width/responsive rules, code copying, and TOC layout with/without enough headings.

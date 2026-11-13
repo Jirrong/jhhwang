@@ -107,5 +107,13 @@
   "policy": "Original theme bases stay unchanged. The user explicitly authorized PDF-first CV navigation, responsive width/spacing improvements, and profile refinement using harris-junseo-lee.github.io as a reference. The declared Sass append contains these scoped layout changes.",
   "approved_appends": {
     "css/main.scss": "\n// Approved responsive layout refinements.\n@import \"site-layout\";\n"
+  },
+  "approved_substitutions": {
+    "_includes/head.html": [
+      {
+        "original": "{{ \"/css/main.css\" | prepend: site.baseurl | prepend: site.url}}",
+        "current": "{{ \"/css/main.css\" | prepend: site.baseurl | prepend: site.url}}?v={{ site.time | date: '%s' }}"
+      }
+    ]
   }
 }

@@ -13,6 +13,12 @@ for name, expected in manifest['files'].items():
         errors.append(f'missing original design file: {name}')
         continue
     data = path.read_bytes()
+    for change in manifest.get('approved_substitutions', {}).get(name, []):
+        current = change['current'].encode()
+        if data.count(current) != 1:
+            errors.append(f'missing approved substitution: {name}')
+            continue
+        data = data.replace(current, change['original'].encode(), 1)
     suffix = manifest.get('approved_appends', {}).get(name)
     if suffix:
         suffix = suffix.encode()

@@ -60,7 +60,7 @@ for path,page in pages.items():
  if 'navbar-collapse-1' not in page.ids or 'footer' not in page.ids:errors.append(f'{page.path}: original navigation/footer structure missing')
  for style in page.styles:
   href=style.get('href','')
-  if not href.endswith('/css/main.css'):
+  if not urlsplit(href).path.endswith('/css/main.css'):
    errors.append(f'{page.path}: unexpected screen-theme stylesheet {href}')
 home=pages.get(root/'index.html')
 if home:
