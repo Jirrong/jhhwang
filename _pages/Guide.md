@@ -1,7 +1,7 @@
 ---
 title: "Site Guide"
 layout: textlay
-excerpt: "Writing blog posts and maintaining the CV and publication list."
+excerpt: "Adding research, seminar materials, blog posts, publications, and a CV."
 permalink: /guide/
 lang: en
 math: true

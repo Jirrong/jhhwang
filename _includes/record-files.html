@@ -1,0 +1,8 @@
+{% if include.files.size > 0 %}
+<ul class="list-unstyled record-files" aria-label="Materials">
+  {% for file in include.files %}
+  {% assign first_character = file.url | slice: 0, 1 %}
+  <li>{% if first_character == '/' %}<a class="btn btn-default" href="{{ file.url | relative_url | escape }}" download>{{ file.label | escape }}</a>{% else %}<a class="btn btn-default" href="{{ file.url | escape }}">{{ file.label | escape }}</a>{% endif %}</li>
+  {% endfor %}
+</ul>
+{% endif %}

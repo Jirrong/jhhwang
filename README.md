@@ -31,6 +31,14 @@ Copy an entry from [docs/publication-template.yml](docs/publication-template.yml
 
 The list starts empty; conference presentations remain in the CV. The source lab's papers and fictional examples are not shown as the author's work.
 
+## Research and resources
+
+**Research** stacks one grey rounded box per Markdown file in `_research/`, with a separate project page for longer notes and updates. The two initial projects come from the repository CV. Copy [docs/research-template.md](docs/research-template.md) to add another; higher `order` values appear first.
+
+**Resources** works the same way using `_resources/`. Upload seminar slides, handouts, or other files to `assets/resources/`, then copy [docs/resource-template.md](docs/resource-template.md). Each record supports multiple local downloads or external HTTP(S) links, a seminar overview, and references. No sample seminar is published.
+
+Open **Site guide** in the footer for pre-filled **New research project** / **New seminar resource** buttons and an upload link. Templates start with `published: false`; change it to `true` when ready. Unpublished entries are omitted from the site and sitemap, while source files and uploaded materials remain public on GitHub. Keep filenames stable to preserve their URLs. The original Research Interests page remains available from Research and the home-page topic links.
+
 ## Build and validate
 
 ```sh
@@ -39,6 +47,8 @@ python3 scripts/check_template.py
 python3 scripts/check_cv_pdf.py
 bundle exec ruby scripts/check_content.rb
 bundle exec ruby scripts/check_publication_rendering.rb
+bundle exec ruby scripts/check_records.rb
+bundle exec ruby scripts/check_record_rendering.rb
 bundle exec jekyll build --safe --strict_front_matter --trace
 python3 scripts/check_site.py _site
 npm ci

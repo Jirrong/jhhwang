@@ -1,0 +1,18 @@
+---
+layout: notebook
+---
+<article class="resource-record" lang="{{ page.lang | default: 'en' | escape }}">
+  <p><a href="{{ '/resources/' | relative_url }}">← All resources</a></p>
+  <header class="well record-card record-header">
+    <div class="record-heading">
+      <h1>{{ page.title | escape }}</h1>
+      {% if page.kind and page.kind != '' %}<span class="label label-default">{{ page.kind | escape }}</span>{% endif %}
+    </div>
+    {% include resource-meta.html record=page %}
+    <p class="record-summary">{{ page.summary | escape }}</p>
+    {% include record-topics.html topics=page.topics %}
+    {% include record-files.html files=page.files %}
+  </header>
+  <div class="notebook-content">{{ content }}</div>
+</article>
+{% include notebook-math.html %}

@@ -1,0 +1,5 @@
+{% if include.topics.size > 0 %}
+<ul class="list-inline record-topics" aria-label="Topics">
+  {% for topic in include.topics %}<li><span class="label label-default">{{ topic | escape }}</span></li>{% endfor %}
+</ul>
+{% endif %}

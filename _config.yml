@@ -53,6 +53,13 @@ future: false
 show_drafts: false
 plugins: [jekyll-feed, jekyll-sitemap]
 whitelist: [jekyll-feed, jekyll-sitemap]
+collections:
+  research:
+    output: true
+    permalink: /research/:name/
+  resources:
+    output: true
+    permalink: /resources/:name/
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -82,6 +89,22 @@ defaults:
       math: true
       toc: true
       notebook_class: notebook-article
+  - scope:
+      path: ''
+      type: research
+    values:
+      layout: research-record
+      lang: en
+      math: true
+      notebook_class: record-page
+  - scope:
+      path: ''
+      type: resources
+    values:
+      layout: resource-record
+      lang: en
+      math: true
+      notebook_class: record-page
 
 # The public site and new blog posts default to English.
 lang: en

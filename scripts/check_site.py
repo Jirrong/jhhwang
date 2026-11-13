@@ -41,7 +41,7 @@ def local_target(url,current):
 pages={}
 for path in root.rglob('*.html'):
  p=Page(str(path.relative_to(root)));p.feed(path.read_text());pages[path]=p
-required=['index.html','cv/index.html','interests/index.html','publications/index.html','blog/index.html','guide/index.html','writing/index.html','allnews.html','404.html']
+required=['index.html','cv/index.html','interests/index.html','research/index.html','resources/index.html','publications/index.html','blog/index.html','guide/index.html','writing/index.html','allnews.html','404.html']
 for route in required:
  if root/route not in pages:errors.append('missing route: '+route)
 for path,page in pages.items():

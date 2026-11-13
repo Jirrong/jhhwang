@@ -159,6 +159,82 @@
   padding-top: 20px;
 }
 
+// Stacked research and seminar records use the original Bootstrap well palette.
+.record-stack {
+  margin-top: 28px;
+}
+.record-card {
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  overflow-wrap: break-word;
+}
+.record-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 12px;
+}
+.record-heading h1,
+.record-heading h2 {
+  flex: 1 1 280px;
+  min-width: 0;
+  margin: 0;
+  line-height: 1.35;
+}
+.record-heading h2 {
+  font-size: 24px;
+}
+.record-heading .label {
+  white-space: normal;
+  line-height: 1.5;
+}
+.record-meta {
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.record-summary {
+  font-size: 17px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.record-topics {
+  margin-bottom: 14px;
+}
+.record-topics li {
+  margin-bottom: 6px;
+  max-width: 100%;
+}
+.record-topics .label {
+  white-space: normal;
+  line-height: 1.6;
+}
+.record-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+.record-files .btn {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.record-card > :last-child {
+  margin-bottom: 0;
+}
+.record-read {
+  margin-top: 18px;
+}
+.record-header {
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+.resource-empty h2 {
+  font-size: 22px;
+  margin-top: 0;
+}
+
 @media (max-width: 991px) {
   .notebook-layout.has-toc {
     display: flex;
@@ -176,6 +252,15 @@
   }
 }
 @media (max-width: 767px) {
+  .record-card {
+    padding: 20px;
+  }
+  .record-heading h1 {
+    font-size: 30px;
+  }
+  .record-heading h2 {
+    font-size: 22px;
+  }
   .home-profile .profile-photo {
     max-width: 220px;
     margin-top: 20px;

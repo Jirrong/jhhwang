@@ -12,7 +12,7 @@ permalink: /
 
 <ul class="home-research-list" markdown="0">{% for area in site.data.cv.research_interests %}<li><a href="{{ '/interests/' | relative_url }}#{{ area.id }}"><strong>{{ area.title }}</strong></a> — {{ area.description }}</li>{% endfor %}</ul>
 
-[Research interests and experience →]({{ '/interests/' | relative_url }})
+[Research projects →]({{ '/research/' | relative_url }}) · [Seminar resources →]({{ '/resources/' | relative_url }})
 
 ## Recent Posts
 
