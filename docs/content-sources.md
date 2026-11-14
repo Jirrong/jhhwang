@@ -4,13 +4,13 @@
 - Full collaborator names and the February 2026 award news: the existing `_data/news.yml` at the same commit.
 - Portrait: `images/profile-lab.jpg`, copied without editing from the user's `2026.07.31 IMC Lab 웹페이지 사진.jpg` in `사진.zip`. The Chemistry logo comes from that ZIP's `snuchem.png`; the College of Natural Sciences logo is the user's original `SNU CNS.svg`. Display sizing is handled by CSS.
 - Design and editable publication-field conventions: https://www.allanlab.org/aboutwebsite.html and https://github.com/mpa139/allanlab. The Bootstrap foundation, restrained palette, original theme bases, and template attribution are retained; documented extensions implement the author's later layout and typography requests.
-- The latest user instruction explicitly permits reconstructing the CV, personalizing all sections, and making the blog English; the protected-theme manifest records the affected content templates separately.
+- The author's latest CV instruction requires preserving the uploaded PDF exactly. Website styling and English blog content remain separate from the original document.
 
-The intended Google Drive CV has not been positively identified. Other people's Drive CVs were not used. No unsupported degree, research-group leadership, journal publication, identifier, or new research result has been added. The LinkedIn profile was subsequently supplied directly by the author.
+The author supplied `Curriculum Vitae.pdf` directly on 15 November 2026. This original is copied byte for byte to `assets/pdf/Jiho_Hwang_CV.pdf` (41,679 bytes; SHA-256 `af57b0b621d72bd40e11b8f7735d843aa1764b9b4dfa762c4805b13a7eec1d3e`). No other person's CV is used. The LinkedIn profile was also supplied directly by the author.
 
 Conference contributions are kept under presentations. `_data/publist.yml` is empty until an actual publication is supplied; the drafting example lives under docs and is excluded from the built site. Initial blog copy introduces the blog and does not describe new findings.
 
-The latest PDF-first revision exports the existing website CV record to `assets/pdf/Jiho_Hwang_CV.pdf`; it is a generated version of that record, not a retrieved Google Drive original. The PDF can be replaced directly by the author. The reference at https://harris-junseo-lee.github.io/ is used for presentation/interaction ideas only, with no biographical or publication content copied.
+The earlier PDF generated from website data has been replaced by the author's supplied original, and the generator has been removed. The original-file fingerprint is checked during CI; website work must not regenerate or reformat it. The reference at https://harris-junseo-lee.github.io/ is used for presentation/interaction ideas only, with no biographical or publication content copied.
 
 The Research collection started with two descriptive project entries, taken from the CV's Creative R&E (April 2025–January 2026) and Advanced R&E in Chemistry (March–November 2024) records. Their dates, institutions, research scope, and methods come from that source. No new findings, collaborators, or association with the separately listed conference presentation is inferred. Resources contains no published entries until the author supplies course materials, reports, or seminar files; its examples live only in excluded templates and temporary test fixtures.
 

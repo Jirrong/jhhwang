@@ -6,16 +6,9 @@ A personal academic website based on the [Allan Lab template](https://www.allanl
 
 The navigation's **CV** link and profile CV link open the same-origin file `assets/pdf/Jiho_Hwang_CV.pdf` in a new tab. They have no forced-download attribute or automatic-download script. The browser uses its configured PDF viewer, including an Adobe Acrobat extension when enabled as the default. The old `/cv/` address remains a small page with an Open PDF link. There is no full HTML CV to maintain.
 
-To use an updated/original CV, replace that PDF in the repository. `cv_pdf` in `_config.yml` specifies its path. Deployments preserve the checked-in document and never regenerate it automatically.
+The PDF is the author's original `Curriculum Vitae.pdf`, supplied on 15 November 2026 and copied without any changes. Preserve its exact bytes, including formatting and metadata. The former generator has been removed. Website data in `_data/cv.yml` must never be used to reconstruct or overwrite this document.
 
-The initial two-page PDF was exported from the existing `_data/cv.yml` record, using the same previously public facts. To explicitly export that record again:
-
-```sh
-python3 -m pip install -r scripts/requirements-cv.txt
-python3 scripts/build_cv_pdf.py
-```
-
-The optional exporter requires DejaVu Serif fonts. It is not part of the publication/deployment pipeline, so uploading an author-supplied PDF will not be overwritten. `_data/cv.yml` remains the factual source for home and research content; keep it consistent with the PDF.
+`scripts/cv-original.json` records the original's SHA-256 and byte count; the existing CI check verifies both. Only when the author explicitly supplies a replacement, copy the new file verbatim and update that record plus the fingerprint-based `v` parameter in `_config.yml`'s `cv_pdf` URL. The versioned URL ensures browsers open the supplied document rather than a previously cached PDF. Deployments only copy the checked-in original.
 
 ## Layout and blog
 

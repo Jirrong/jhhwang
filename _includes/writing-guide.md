@@ -168,7 +168,7 @@ Full abstracts are optional on paper and conference records. Use `|` or `>-` YAM
 
 The **CV** menu opens the PDF in a new tab using the browser's preferred PDF viewer. An enabled Adobe Acrobat extension can handle it when configured as the default PDF viewer; the site does not select or install browser extensions. Replace `assets/pdf/Jiho_Hwang_CV.pdf` with an updated PDF to keep every CV link working. Deployments preserve this file and never regenerate it automatically.
 
-The initial PDF was exported from the existing website CV record. An optional builder, `scripts/build_cv_pdf.py`, can export that record again when explicitly run. `_data/cv.yml` continues to hold the factual profile and research information used on the site; keep it consistent with your PDF.
+The CV is the author's uploaded original, preserved exactly as supplied. Its content, layout, fonts, and metadata are not generated from website data. Replacing it requires an author-supplied PDF; maintainers should follow the original-file verification steps in the [repository README](https://github.com/{{ site.repository }}/blob/{{ site.github_branch }}/README.md#cv-viewer).
 
 [Read the blog →]({{ '/blog/' | relative_url }})
 

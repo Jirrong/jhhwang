@@ -1,10 +1,13 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const { createHash } = require('node:crypto');
 const vm = require('node:vm');
 const { parseHTML } = require('linkedom');
 const source = name => fs.readFileSync(`assets/js/${name}.js`, 'utf8');
 const settle = () => new Promise(resolve => setImmediate(resolve));
+const cvOriginal = JSON.parse(fs.readFileSync('scripts/cv-original.json', 'utf8'));
+const cvHref = `/jhhwang${cvOriginal.path}?v=${cvOriginal.sha256.slice(0, 12)}`;
 
 function setupSearch(search = '', failIndex = false) {
   const { document } = parseHTML(fs.readFileSync('_site/blog/index.html', 'utf8'));
@@ -114,7 +117,7 @@ test('post tools create a table of contents and copy only code text', async () =
 test('CV menu and profile links open the PDF in a new tab without forcing a download', () => {
   const { document } = parseHTML(fs.readFileSync('_site/index.html', 'utf8'));
   const nav = [...document.querySelectorAll('#navbar-collapse-1 a')].find(link => link.textContent === 'CV');
-  assert.equal(nav.getAttribute('href'), '/jhhwang/assets/pdf/Jiho_Hwang_CV.pdf');
+  assert.equal(nav.getAttribute('href'), cvHref);
   assert.equal(nav.hasAttribute('download'), false);
   assert.equal(nav.getAttribute('target'), '_blank');
   assert.match(nav.getAttribute('rel'), /noopener/);
@@ -126,6 +129,8 @@ test('CV menu and profile links open the PDF in a new tab without forcing a down
   const data = fs.readFileSync('_site/assets/pdf/Jiho_Hwang_CV.pdf');
   assert.equal(data.subarray(0, 5).toString(), '%PDF-');
   assert.match(data.subarray(-20).toString(), /%%EOF/);
+  assert.equal(data.length, cvOriginal.size_bytes);
+  assert.equal(createHash('sha256').update(data).digest('hex'), cvOriginal.sha256, 'The built PDF must be the author-supplied original, unchanged.');
 });
 
 test('legacy CV page offers a PDF viewer link and has no automatic download script', () => {
@@ -133,7 +138,7 @@ test('legacy CV page offers a PDF viewer link and has no automatic download scri
   const link = document.getElementById('cv-view-link');
   assert.equal(link.hasAttribute('download'), false);
   assert.equal(link.getAttribute('target'), '_blank');
-  assert.equal(link.getAttribute('href'), '/jhhwang/assets/pdf/Jiho_Hwang_CV.pdf');
+  assert.equal(link.getAttribute('href'), cvHref);
   assert.equal(document.querySelector('script[src*="cv-download"]'), null);
   assert.equal(document.getElementById('education'), null);
 });

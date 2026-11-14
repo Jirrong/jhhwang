@@ -111,4 +111,4 @@ defaults:
 lang: en
 
 # Same-origin PDF opened by CV links in the browser's preferred PDF viewer.
-cv_pdf: /assets/pdf/Jiho_Hwang_CV.pdf
+cv_pdf: /assets/pdf/Jiho_Hwang_CV.pdf?v=af57b0b621d7
