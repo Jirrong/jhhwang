@@ -1,0 +1,7 @@
+{% assign abstract_text = include.text | default: '' | strip %}
+{% if abstract_text != '' %}
+<details class="abstract-disclosure">
+  <summary><span>Abstract</span><span class="abstract-action"><span class="abstract-closed">Read</span><span class="abstract-open">Hide</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+  <div class="abstract-body">{{ abstract_text | markdownify }}</div>
+</details>
+{% endif %}

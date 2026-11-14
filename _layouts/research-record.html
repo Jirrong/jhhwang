@@ -4,14 +4,15 @@ layout: notebook
 <article class="research-record" lang="{{ page.lang | default: 'en' | escape }}">
   <p><a href="{{ '/research/' | relative_url }}">← All research</a></p>
   <header class="well record-card record-header">
-    <div class="record-heading">
-      <h1>{{ page.title | escape }}</h1>
-      {% if page.status and page.status != '' %}<span class="label label-default">{{ page.status | escape }}</span>{% endif %}
-    </div>
-    <p class="text-muted record-meta">{{ page.period | escape }}{% if page.program and page.program != '' %}<br>{{ page.program | escape }}{% endif %}{% if page.institution and page.institution != '' %} · {{ page.institution | escape }}{% endif %}</p>
-    <p class="record-summary">{{ page.summary | escape }}</p>
+    <div class="record-main">
+    <div class="record-topline"><span>{{ page.period | escape }}</span>{% if page.status and page.status != '' %}<span class="record-badge status-{{ page.status | slugify }}">{{ page.status | escape }}</span>{% endif %}</div>
+    <h1 class="record-page-title">{{ page.title | escape }}</h1>
+    <p class="record-context">{% if page.program and page.program != '' %}<strong>{{ page.program | escape }}</strong>{% endif %}{% if page.institution and page.institution != '' %}<span> · {{ page.institution | escape }}</span>{% endif %}</p>
+    <p class="record-body record-summary">{{ page.summary | escape }}</p>
     {% include record-topics.html topics=page.topics %}
+    {% include entry-media.html record=page folder='/images/research/' %}
     {% include record-files.html files=page.files %}
+    </div>
   </header>
   <div class="notebook-content">{{ content }}</div>
 </article>

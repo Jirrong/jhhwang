@@ -33,4 +33,4 @@ if (root / 'assets/css/academic.css').exists():
     errors.append('redesign override stylesheet must not be present')
 if errors:
     raise SystemExit('\n'.join(errors))
-print(f"PASS: {len(manifest['files'])} original theme bases match {manifest['commit']} byte for byte.")
+print(f"PASS: {len(manifest['files'])} original theme bases match {manifest['commit']} after the documented font-loading and layout hooks.")

@@ -1,6 +1,6 @@
 # Jiho Hwang's academic website
 
-A personal academic website based on the [Allan Lab template](https://www.allanlab.org/aboutwebsite.html). The existing fonts, palette, and Bootstrap foundation are retained. [Junseo Lee's site](https://harris-junseo-lee.github.io/) informed the compact profile, direct CV link, and restrained academic presentation; its biography, affiliations, papers, and CV are not reused.
+A personal academic website based on the [Allan Lab template](https://www.allanlab.org/aboutwebsite.html). The restrained palette and Bootstrap foundation are retained. The author's requested typography refinement uses self-hosted Source Sans 3 for body/UI and Source Serif 4 for major headings; card titles stay in the body family. Font licenses are in `fonts/licenses/`. [Design notes](docs/academic-design.md) explain the reference sites and shared layout.
 
 ## CV viewer
 
@@ -19,9 +19,9 @@ The optional exporter requires DejaVu Serif fonts. It is not part of the publica
 
 ## Layout and blog
 
-All page layouts share a 1360px maximum container, including Home, Publications, and notebook pages. Home has consistent section spacing and balanced visible logo heights. Grey cards use compact line spacing. The navbar title is **Personal Webpage of Jiho Hwang**; section links use a left-to-right background highlight on hover or keyboard focus, with a current-section indicator. The menu collapses at tablet widths to fit the longer title and honors reduced-motion preferences.
+All page layouts share a 1360px maximum container, including Home, Publications, and notebook pages. Research, Publications, Conferences, and News also share the same full-width card, inner padding, and body type. Home has a portrait aligned to the right content edge, clear section dividers, and balanced visible logo heights. Grey cards use compact line spacing and separate title, author/context, metadata, and supporting material. The navbar title is **Personal Webpage of Jiho Hwang**; section links use a left-to-right background highlight on hover or keyboard focus, with a current-section indicator. The menu collapses at tablet widths to fit the longer title and honors reduced-motion preferences.
 
-Notebook pages keep a desktop contents sidebar and a single-column mobile layout. Code, tables, images, and equations remain within the available width. Scoped responsive refinements live in `_sass/_site-layout.scss`, appended to the original theme; no replacement palette or font family is introduced.
+Notebook pages keep a desktop contents sidebar and a single-column mobile layout. Code, tables, images, and equations remain within the available width. Scoped responsive refinements live in `_sass/_site-layout.scss` and `_sass/_academic-ui.scss`, appended to the original theme. Font loading is local, with no Google Fonts request.
 
 Open **Blog → Write a post** or **Guide → New post** for the dated English Markdown template. Commit to `gh-pages` to publish, or use a branch/PR to review first. Posts use `_posts/YYYY-MM-DD-title.md`; a fuller scientific-note template is in `_drafts/academic-post-template.md`.
 
@@ -29,7 +29,9 @@ MathJax, code copying, TOC, tables/footnotes, full-text search, tag filters, and
 
 ## Publications
 
-Copy an entry from [docs/publication-template.yml](docs/publication-template.yml) into `_data/publist.yml` (replace `[]` for the first entry). Fill the fields and set `published: true` when ready. `highlight: 1` enables the original selected-paper card; `highlight: 0` shows the full-list citation only. Optional figure files belong in `images/pubpic/`.
+Copy an entry from [docs/publication-template.yml](docs/publication-template.yml) into `_data/publist.yml` (replace `[]` for the first entry). Fill the fields and set `published: true` when ready. Every paper appears once in a full-width card; `highlight: 1` adds a Selected badge. Optional figure files belong in `images/pubpic/`. Both papers and conferences accept `images` galleries and an `abstract` Markdown text block. Abstracts start closed and use a native disclosure that works with keyboard input and without JavaScript. The legacy single `image` filename still works.
+
+Each image record has a local `file`, descriptive `alt`, optional `caption`, and optional `kind: photo|graphical`. Figures are displayed whole and link to the full-size original. Missing images or abstracts produce no empty frames or controls. The Site guide includes the complete authoring format; upload validation catches missing files and missing alt text.
 
 The journal list starts empty. The separate **Conferences** section below it uses `_data/conferences.yml`, with a template in `docs/conference-template.yml`. It contains the sourced ACS Spring 2026 and KCS Fall 2025 poster records. The source lab's papers and fictional examples are not shown as the author's work.
 
@@ -41,7 +43,7 @@ The home-page LinkedIn link points to `jirrong0116`. `scripts/sync_linkedin.py` 
 
 ## Research and resources
 
-**Research** stacks one grey rounded box per Markdown file in `_research/`, with a separate project page for longer notes and updates. The two initial projects come from the repository CV. Copy [docs/research-template.md](docs/research-template.md) to add another; higher `order` values appear first.
+**Research** stacks one grey rounded box per Markdown file in `_research/`, with a separate project page for longer notes and updates. The two historical projects come from the repository CV; the current IMC Lab project uses the author's LinkedIn screenshots. Copy [docs/research-template.md](docs/research-template.md) to add another; higher `order` values appear first. Optional `images` use the shared media format.
 
 **Resources** uses `_resources/` for course notes, assignments, reports, seminar slides, handouts, and supporting code. Upload files to `assets/resources/`, then copy [docs/resource-template.md](docs/resource-template.md). Each record supports a type (`kind`), optional `course`/`term` and event information, multiple downloads or external HTTP(S) links, a description, and references. No sample material is published.
 
@@ -49,7 +51,7 @@ Open **Site guide** in the footer for pre-filled **New research project**, **New
 
 ## News
 
-Home uses the full content width, with a brief News list below its main content. The latest three entries come from `_data/news.yml` in file order. Add new entries at the top; use `date`, full Markdown `headline`, and an optional short `summary`. The dedicated `/news/` page and original `/allnews.html` address share the full archive. The News menu and home-page **All news** link point to `/news/`.
+Home uses the full content width, with a brief News list below its main content. The latest three entries come from `_data/news.yml` in file order. Add new entries at the top; use `date`, full Markdown `headline`, and an optional short `summary`. The dedicated `/news/` page and original `/allnews.html` address share the full archive, with one grey card per item. Optional `title`, stable `id`, and `images` add headings, direct links, and photo galleries. Use [docs/news-template.yml](docs/news-template.yml) and upload photos to `images/news/`. Home stays brief and links to each full item; `published: false` omits a draft.
 
 ## Build and validate
 
@@ -69,4 +71,4 @@ npm ci
 npm test
 ```
 
-The theme guard checks original theme bases against `f25f182c00dbd1e625bb355571cc352bb9f40612`, with the explicitly approved Sass append recorded in `scripts/template-baseline.json`. Production uses the existing GitHub Pages `gh-pages` branch and `/jhhwang` base path. Content provenance is in `docs/content-sources.md`.
+The theme guard checks original theme bases against `f25f182c00dbd1e625bb355571cc352bb9f40612`, with the approved Sass append, local font-loading hook, and preload hook recorded in `scripts/template-baseline.json`. Rendering tests exercise image validation, galleries, initially closed abstracts, missing optional fields, and draft filtering using isolated fixtures. Production uses the existing GitHub Pages `gh-pages` branch and `/jhhwang` base path. Content provenance is in `docs/content-sources.md`.

@@ -104,7 +104,7 @@
     "_pages/publications.md": "992f6fc25eff2b658d657fbb3d3bab736d2b33f8",
     "_pages/404.md": "4dfa48449bd4a5cc319c9b6b1f50f874667ef12f"
   },
-  "policy": "Original theme bases stay unchanged. The user explicitly authorized PDF-first CV navigation, responsive width/spacing improvements, and profile refinement using harris-junseo-lee.github.io as a reference. The declared Sass append contains these scoped layout changes.",
+  "policy": "Original theme bases are verified after documented hooks. The author authorized academic typography review, self-hosted Source Sans 3/Source Serif 4, disabling the old remote font import, responsive layout refinements, and shared media/disclosure components. The Allan Lab palette and Bootstrap foundation remain.",
   "approved_appends": {
     "css/main.scss": "\n// Approved responsive layout refinements.\n@import \"site-layout\";\n"
   },
@@ -113,6 +113,22 @@
       {
         "original": "{{ \"/css/main.css\" | prepend: site.baseurl | prepend: site.url}}",
         "current": "{{ \"/css/main.css\" | prepend: site.baseurl | prepend: site.url}}?v={{ site.time | date: '%s' }}"
+      },
+      {
+        "original": "  <link rel=\"stylesheet\"",
+        "current": "  {% include font-preloads.html %}\n  <link rel=\"stylesheet\""
+      }
+    ],
+    "css/main.scss": [
+      {
+        "original": "@import \"bootstrap\";",
+        "current": "$web-font-path: false;\n@import \"bootstrap\";"
+      }
+    ],
+    "_sass/bootstrap/_bootswatch.scss": [
+      {
+        "original": "@import url($web-font-path);",
+        "current": "@if $web-font-path {\n  @import url($web-font-path);\n}"
       }
     ]
   }

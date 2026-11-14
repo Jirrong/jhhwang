@@ -11,4 +11,10 @@
   distinction: ""
   abstract_number: ""
   event_url: ""
+  abstract: ""     # Full text; initially collapsed. Separate from abstract_number.
+  images: []
+  # - file: /images/conferences/your-poster-or-photo.jpg
+  #   alt: "Describe the image."
+  #   kind: photo   # Use graphical for a graphical abstract.
+  #   caption: ""
   published: false

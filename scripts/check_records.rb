@@ -2,6 +2,7 @@
 # Check author-managed project/seminar metadata and local download paths.
 require 'yaml'
 require 'uri'
+require_relative 'content_media'
 
 root = File.expand_path(ARGV.fetch(0, '..'), ARGV.empty? ? __dir__ : Dir.pwd)
 errors = []
@@ -22,6 +23,7 @@ present = ->(value) { value.is_a?(String) && !value.strip.empty? }
         errors << "#{name}: published must be true or false"
       end
       next if record['published'] == false
+      errors.concat(ContentMedia.check(record, root, name, legacy_folder: "images/#{collection}"))
       counts[collection] += 1
       fields = collection == 'research' ? %w[title summary period] : %w[title summary]
       fields.each { |field| errors << "#{name}: #{field} is required" unless present.call(record[field]) }

@@ -8,6 +8,11 @@ status: Ongoing
 summary: "Describe the question, approach, and scope in one or two sentences."
 topics: [Chemistry]
 published: false
+images: []
+# - file: /images/research/your-figure.png
+#   alt: "Describe the image or scientific figure."
+#   kind: graphical
+#   caption: ""
 # Optional supporting files (upload local files to assets/resources/ first):
 # files:
 #   - label: "Poster (PDF)"

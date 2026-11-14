@@ -1,0 +1,3 @@
+{% assign authors_text = include.authors | escape %}{% assign author_name = site.author.name | default: site.title | escape %}
+{% assign author_highlight = '<strong>' | append: author_name | append: '</strong>' %}
+<p class="record-authors">{{ authors_text | replace: author_name, author_highlight }}</p>

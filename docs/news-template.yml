@@ -1,0 +1,14 @@
+# Add an entry at the top of _data/news.yml. Upload the real image files first.
+- id: unique-news-id
+  date: "Month Day, Year"
+  title: "A short news title"
+  summary: "A brief sentence for Home."
+  headline: >-
+    Write the full announcement here. Markdown links and paragraphs are supported.
+  images: []
+  # - file: /images/news/your-photo.jpg
+  #   alt: "Describe the event and what the photograph shows."
+  #   kind: photo
+  #   caption: "Optional caption."
+  # Add another list item for each image.
+  published: false
