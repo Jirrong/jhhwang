@@ -1,0 +1,19 @@
+# Newest meetings first. These are conference presentations, not journal papers.
+- id: acs-spring-2026
+  meeting: ACS Spring 2026
+  date: March 22–26, 2026
+  location: Atlanta, Georgia, USA
+  type: Poster presentation
+  title: Uncovering origins of the reaction driving force in an aromatic ring-opening/ring-closing metathesis (ArROM/RCM) cascade
+  authors: Jiho Hwang, Seungchan Hong, Doyoung Kim, and Jaehoon Min
+  session: 'ORGN — Physical Organic Chemistry: Calculations, Mechanisms, Photochemistry & High-Energy Species'
+  distinction: Selected for Sci-Mix
+  abstract_number: '4395546'
+  event_url: https://www.acs.org/events/acs-meetings/past-meetings.html
+- id: kcs-fall-2025
+  meeting: Korean Chemical Society Fall Conference
+  date: September 2025
+  type: Poster presentation
+  title: Uncovering origins of the reaction driving force in an aromatic ring-opening/ring-closing metathesis (ArROM/RCM) cascade
+  authors: Jiho Hwang, Seungchan Hong, Doyoung Kim, and Jaehoon Min
+  session: Future Chemist Research Presentation

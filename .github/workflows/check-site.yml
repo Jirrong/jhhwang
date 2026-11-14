@@ -19,10 +19,12 @@ jobs:
           cache: npm
       - run: python3 scripts/check_template.py
       - run: python3 scripts/check_cv_pdf.py
+      - run: python3 -m unittest discover -s tests -p 'test_*.py'
       - run: bundle exec ruby scripts/check_content.rb
       - run: bundle exec ruby scripts/check_publication_rendering.rb
       - run: bundle exec ruby scripts/check_records.rb
       - run: bundle exec ruby scripts/check_record_rendering.rb
+      - run: bundle exec ruby scripts/check_linkedin_rendering.rb
       - run: bundle exec jekyll build --strict_front_matter --trace
       - run: python3 scripts/check_site.py _site
       - run: npm ci --ignore-scripts --no-fund --no-audit

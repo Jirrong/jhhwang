@@ -29,7 +29,13 @@ MathJax, code copying, TOC, tables/footnotes, full-text search, tag filters, and
 
 Copy an entry from [docs/publication-template.yml](docs/publication-template.yml) into `_data/publist.yml` (replace `[]` for the first entry). Fill the fields and set `published: true` when ready. `highlight: 1` enables the original selected-paper card; `highlight: 0` shows the full-list citation only. Optional figure files belong in `images/pubpic/`.
 
-The list starts empty; conference presentations remain in the CV. The source lab's papers and fictional examples are not shown as the author's work.
+The journal list starts empty. The separate **Conferences** section below it uses `_data/conferences.yml`, with a template in `docs/conference-template.yml`. It contains the sourced ACS Spring 2026 and KCS Fall 2025 poster records. The source lab's papers and fictional examples are not shown as the author's work.
+
+## Profile and LinkedIn
+
+The smaller portrait and both institution logos are the author's original uploaded files. The profile and current IMC Lab research entry use the author's supplied LinkedIn screenshots. Historical CV facts remain sourced separately; deployments preserve the checked-in CV PDF.
+
+The home-page LinkedIn link points to `jirrong0116`. `scripts/sync_linkedin.py` and the **Sync LinkedIn posts** workflow can mirror original public post text and images with deduplication and source links. Live fetching remains inactive until approved `r_member_social` access and repository credentials are configured. See [docs/linkedin-sync.md](docs/linkedin-sync.md) for setup, limitations, and offline API JSON imports. Posting-only LinkedIn permissions are insufficient.
 
 ## Research and resources
 
@@ -49,10 +55,12 @@ Home uses the full content width, with a brief News list below its main content.
 bundle install
 python3 scripts/check_template.py
 python3 scripts/check_cv_pdf.py
+python3 -m unittest discover -s tests -p 'test_*.py'
 bundle exec ruby scripts/check_content.rb
 bundle exec ruby scripts/check_publication_rendering.rb
 bundle exec ruby scripts/check_records.rb
 bundle exec ruby scripts/check_record_rendering.rb
+bundle exec ruby scripts/check_linkedin_rendering.rb
 bundle exec jekyll build --safe --strict_front_matter --trace
 python3 scripts/check_site.py _site
 npm ci

@@ -1,0 +1,10 @@
+- name: Department of Chemistry, Seoul National University
+  url: https://chem.snu.ac.kr/en
+  logo: /images/affiliations/snu-chemistry.png
+  width: 1720
+  height: 577
+- name: College of Natural Sciences, Seoul National University
+  url: https://science.snu.ac.kr/
+  logo: /images/affiliations/snu-natural-sciences.svg
+  width: 1318
+  height: 300

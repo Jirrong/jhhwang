@@ -105,6 +105,13 @@ Add entries at the top of [`_data/news.yml`](https://github.com/{{ site.reposito
   headline: "The complete announcement, with any details and links."
 ```
 
+## LinkedIn posts
+{: #linkedin-posts }
+
+The home-page **LinkedIn** link opens the author's profile. The repository also includes an importer and an automatic sync workflow for original public posts. **Automatic fetching stays inactive until an approved LinkedIn API read token is configured.** A profile URL, ordinary LinkedIn login, or `w_member_social` posting permission does not grant access to read personal posts.
+
+See the [LinkedIn sync setup](https://github.com/{{ site.repository }}/blob/{{ site.github_branch }}/docs/linkedin-sync.md) for the required approved `r_member_social` permission, repository secret, author identifier, and offline JSON import command. Never commit an access token or session cookie. Imported posts keep their original text, date, images, and source link; repeated runs avoid duplicates. Videos and documents remain linked to the original post.
+
 ## Add a publication
 {: #add-a-publication }
 
@@ -116,7 +123,11 @@ The Publications page keeps the original Allan Lab fields and highlighted-paper 
 4. Set `highlight: 1` to show a paper in **Selected Publications** as well as the full list. `highlight: 0` shows it in the full list only.
 5. An optional `image` is a filename in `images/pubpic/`. `description`, `news1`, and `news2` provide the original template's summary and news fields.
 
-An image and link are optional; missing fields do not create broken placeholders. List conference presentations in the CV separately from journal publications.
+An image and link are optional; missing fields do not create broken placeholders.
+
+### Add a conference presentation
+
+The **Conferences** section appears below Publications. Add an entry to [`_data/conferences.yml`](https://github.com/{{ site.repository }}/edit/{{ site.github_branch }}/_data/conferences.yml), using the [conference template](https://github.com/{{ site.repository }}/blob/{{ site.github_branch }}/docs/conference-template.yml). Keep the newest meeting first. The title, authors, dates, poster/talk type, session, distinction, abstract number, and meeting link can be edited independently. `published: false` hides a draft entry. Conference abstracts and posters stay separate from journal publications.
 
 ## Update the CV
 {: #update-the-cv }

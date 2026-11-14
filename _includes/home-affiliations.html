@@ -1,0 +1,5 @@
+<div class="home-affiliations" aria-label="Academic affiliations">
+  {% for affiliation in site.data.affiliations %}
+  <a href="{{ affiliation.url | escape }}"><img class="affiliation-logo" src="{{ affiliation.logo | relative_url }}" alt="{{ affiliation.name | escape }}" width="{{ affiliation.width }}" height="{{ affiliation.height }}"></a>
+  {% endfor %}
+</div>

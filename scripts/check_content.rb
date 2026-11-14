@@ -71,5 +71,37 @@ else
     end
   end
 end
+conferences = load_yaml.call('_data/conferences.yml')
+unless conferences.is_a?(Array)
+  errors << '_data/conferences.yml must be a YAML list'
+else
+  ids = []
+  conferences.each_with_index do |entry, index|
+    unless entry.is_a?(Hash)
+      errors << "Conference #{index}: expected a record"
+      next
+    end
+    next if entry['published'] == false
+    %w[id meeting date type title authors].each do |field|
+      errors << "Conference #{index}: #{field} is required" unless entry[field].is_a?(String) && !entry[field].strip.empty?
+    end
+    errors << "Conference #{index}: use a unique lowercase id" unless entry['id'].to_s.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/) && !ids.include?(entry['id'])
+    ids << entry['id']
+    url = entry.fetch('event_url', '').to_s
+    unless url.empty?
+      begin
+        parsed = URI.parse(url)
+        errors << "Conference #{index}: event_url must be HTTP(S)" unless %w[http https].include?(parsed.scheme) && parsed.host
+      rescue URI::InvalidURIError
+        errors << "Conference #{index}: invalid event_url"
+      end
+    end
+  end
+end
+affiliations = load_yaml.call('_data/affiliations.yml')
+affiliations.each do |entry|
+  path = entry.fetch('logo', '').delete_prefix('/')
+  errors << "Affiliation logo is missing: #{path}" unless path.start_with?('images/affiliations/') && File.file?(File.join(root, path))
+end
 abort(errors.join("\n")) unless errors.empty?
-puts "PASS: CV records and #{papers.count { |p| p['published'] != false }} public publication records are valid."
+puts "PASS: CV, #{papers.count { |p| p['published'] != false }} journal publications, #{conferences.size} conference entries, and affiliation logos are valid."
