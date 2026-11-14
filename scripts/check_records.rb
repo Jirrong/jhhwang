@@ -33,7 +33,7 @@ present = ->(value) { value.is_a?(String) && !value.strip.empty? }
       else
         orders[order] = name
       end
-      %w[program institution status kind event event_date].each do |field|
+      %w[program institution status kind event event_date course term].each do |field|
         errors << "#{name}: #{field} must be text" if record.key?(field) && !record[field].is_a?(String)
       end
       if record.key?('topics') && !(record['topics'].is_a?(Array) && record['topics'].all? { |topic| present.call(topic) })

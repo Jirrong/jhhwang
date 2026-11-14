@@ -111,27 +111,30 @@ test('post tools create a table of contents and copy only code text', async () =
   assert.match(document.querySelector('[role="status"]').textContent, /Code copied/);
 });
 
-test('CV menu and profile links download the actual PDF without a JavaScript dependency', () => {
+test('CV menu and profile links open the PDF in a new tab without forcing a download', () => {
   const { document } = parseHTML(fs.readFileSync('_site/index.html', 'utf8'));
   const nav = [...document.querySelectorAll('#navbar-collapse-1 a')].find(link => link.textContent === 'CV');
   assert.equal(nav.getAttribute('href'), '/jhhwang/assets/pdf/Jiho_Hwang_CV.pdf');
-  assert.equal(nav.getAttribute('download'), 'Jiho_Hwang_CV.pdf');
+  assert.equal(nav.hasAttribute('download'), false);
+  assert.equal(nav.getAttribute('target'), '_blank');
+  assert.match(nav.getAttribute('rel'), /noopener/);
   assert.equal(nav.getAttribute('type'), 'application/pdf');
-  const profile = document.querySelector('.profile-contact a[download]');
+  const profile = document.querySelector('.profile-contact a[type="application/pdf"]');
   assert.equal(profile.getAttribute('href'), nav.getAttribute('href'));
+  assert.equal(profile.getAttribute('target'), '_blank');
+  assert.equal(profile.hasAttribute('download'), false);
   const data = fs.readFileSync('_site/assets/pdf/Jiho_Hwang_CV.pdf');
   assert.equal(data.subarray(0, 5).toString(), '%PDF-');
   assert.match(data.subarray(-20).toString(), /%%EOF/);
 });
 
-test('legacy CV page triggers a single PDF download and retains a normal fallback link', () => {
+test('legacy CV page offers a PDF viewer link and has no automatic download script', () => {
   const { document } = parseHTML(fs.readFileSync('_site/cv/index.html', 'utf8'));
-  const link = document.getElementById('cv-download-link');
-  let clicks = 0; link.click = () => { clicks += 1; };
-  vm.runInNewContext(source('cv-download'), { document });
-  assert.equal(clicks, 1);
-  assert.equal(link.getAttribute('download'), 'Jiho_Hwang_CV.pdf');
+  const link = document.getElementById('cv-view-link');
+  assert.equal(link.hasAttribute('download'), false);
+  assert.equal(link.getAttribute('target'), '_blank');
   assert.equal(link.getAttribute('href'), '/jhhwang/assets/pdf/Jiho_Hwang_CV.pdf');
+  assert.equal(document.querySelector('script[src*="cv-download"]'), null);
   assert.equal(document.getElementById('education'), null);
 });
 
@@ -152,6 +155,7 @@ test('compiled CSS makes the outer container fill the screen and provides a wide
   const sheet = cssom.parse(fs.readFileSync('_site/css/main.css', 'utf8'));
   const value = (selector, property) => [...sheet.cssRules].filter(rule => rule.selectorText === selector).map(rule => rule.style.getPropertyValue(property)).filter(Boolean).at(-1);
   assert.equal(value('.container-fluid', 'width'), '100%');
+  assert.equal(value('.container-fluid', 'max-width'), '1360px');
   assert.equal(value('.notebook-page', 'max-width'), '1360px');
   assert.equal(value('.notebook-layout.has-toc', 'grid-template-columns'), 'minmax(0, 1fr) 240px');
   assert.equal(value('.notebook-content', 'min-width'), '0');
@@ -181,18 +185,22 @@ test('research and resources have their own navigation and retain original wells
   }
   const { document: resources } = parseHTML(fs.readFileSync('_site/resources/index.html', 'utf8'));
   assert.equal(resources.querySelectorAll('.resource-card').length, 0);
-  assert.match(resources.querySelector('.resource-empty').textContent, /No seminar materials have been published yet/);
+  assert.match(resources.querySelector('.resource-empty').textContent, /No resources have been published yet/);
   assert.equal(resources.querySelector('#footer a[href="/jhhwang/guide/"]').textContent, 'Site guide');
 });
 
-test('research and seminar shortcuts prepare draft records and the next stacking order', () => {
+test('research and resource shortcuts prepare drafts for courses, reports, and seminars', () => {
   const { document } = parseHTML(fs.readFileSync('_site/guide/index.html', 'utf8'));
   document.getElementById('new-research-link').setAttribute('data-next-order', '12');
   document.getElementById('new-resource-link').setAttribute('data-next-order', '5');
+  document.getElementById('new-report-link').setAttribute('data-next-order', '7');
+  document.getElementById('new-seminar-link').setAttribute('data-next-order', '8');
   vm.runInNewContext(source('site'), { document, URL, Intl, Date });
   for (const [id, folder, filename, order] of [
     ['new-research-link', '_research', 'project-title.md', 12],
-    ['new-resource-link', '_resources', 'seminar-title.md', 5]
+    ['new-resource-link', '_resources', 'course-notes.md', 5],
+    ['new-report-link', '_resources', 'report-title.md', 7],
+    ['new-seminar-link', '_resources', 'seminar-title.md', 8]
   ]) {
     const url = new URL(document.getElementById(id).getAttribute('href'));
     assert.equal(url.pathname, `/Jirrong/jhhwang/new/gh-pages/${folder}`);
@@ -203,6 +211,10 @@ test('research and seminar shortcuts prepare draft records and the next stacking
     assert.match(content, /## References/);
   }
   const resource = new URL(document.getElementById('new-resource-link').getAttribute('href')).searchParams.get('value');
-  assert.match(resource, /url: \/assets\/resources\/your-seminar.pdf/);
+  assert.match(resource, /kind: Course material/);
+  assert.match(resource, /course: ""\nterm: ""/);
+  assert.match(resource, /url: \/assets\/resources\/course-notes.pdf/);
+  assert.match(new URL(document.getElementById('new-report-link').getAttribute('href')).searchParams.get('value'), /kind: Report/);
+  assert.match(new URL(document.getElementById('new-seminar-link').getAttribute('href')).searchParams.get('value'), /kind: Seminar/);
   assert.ok(document.querySelector('a[href="https://github.com/Jirrong/jhhwang/upload/gh-pages/assets/resources"]'));
 });

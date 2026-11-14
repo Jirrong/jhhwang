@@ -7,6 +7,7 @@
 
 # Site settings
 title: Jiho Hwang
+navbar_title: Personal Webpage of Jiho Hwang
 email: jhhwang16@snu.ac.kr
 description: > # this means to ignore newlines until "baseurl:"
   Jiho Hwang, undergraduate student in Chemistry at Seoul National University.
@@ -109,5 +110,5 @@ defaults:
 # The public site and new blog posts default to English.
 lang: en
 
-# Same-origin asset used by every CV download link.
+# Same-origin PDF opened by CV links in the browser's preferred PDF viewer.
 cv_pdf: /assets/pdf/Jiho_Hwang_CV.pdf

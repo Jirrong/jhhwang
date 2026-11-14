@@ -2,9 +2,9 @@
 
 A personal academic website based on the [Allan Lab template](https://www.allanlab.org/aboutwebsite.html). The existing fonts, palette, and Bootstrap foundation are retained. [Junseo Lee's site](https://harris-junseo-lee.github.io/) informed the compact profile, direct CV link, and restrained academic presentation; its biography, affiliations, papers, and CV are not reused.
 
-## CV download
+## CV viewer
 
-The navigation's **CV** link and the profile CV link download the same-origin file `assets/pdf/Jiho_Hwang_CV.pdf`. The old `/cv/` address is a compatibility download page with a normal fallback link. There is no full HTML CV to maintain.
+The navigation's **CV** link and profile CV link open the same-origin file `assets/pdf/Jiho_Hwang_CV.pdf` in a new tab. They have no forced-download attribute or automatic-download script. The browser uses its configured PDF viewer, including an Adobe Acrobat extension when enabled as the default. The old `/cv/` address remains a small page with an Open PDF link. There is no full HTML CV to maintain.
 
 To use an updated/original CV, replace that PDF in the repository. `cv_pdf` in `_config.yml` specifies its path. Deployments preserve the checked-in document and never regenerate it automatically.
 
@@ -19,7 +19,9 @@ The optional exporter requires DejaVu Serif fonts. It is not part of the publica
 
 ## Layout and blog
 
-An explicit full-width content container fixes pages shrinking to the width of short text. Notebook pages use up to 1360px, with a desktop contents sidebar and a single-column mobile layout. Code, tables, images, and equations remain within the available width. Scoped responsive refinements live in `_sass/_site-layout.scss`, appended to the original theme; no replacement palette or font family is introduced.
+All page layouts share a 1360px maximum container, including Home, Publications, and notebook pages. Home has consistent section spacing and balanced visible logo heights. Grey cards use compact line spacing. The navbar title is **Personal Webpage of Jiho Hwang**; section links use a left-to-right background highlight on hover or keyboard focus, with a current-section indicator. The menu collapses at tablet widths to fit the longer title and honors reduced-motion preferences.
+
+Notebook pages keep a desktop contents sidebar and a single-column mobile layout. Code, tables, images, and equations remain within the available width. Scoped responsive refinements live in `_sass/_site-layout.scss`, appended to the original theme; no replacement palette or font family is introduced.
 
 Open **Blog → Write a post** or **Guide → New post** for the dated English Markdown template. Commit to `gh-pages` to publish, or use a branch/PR to review first. Posts use `_posts/YYYY-MM-DD-title.md`; a fuller scientific-note template is in `_drafts/academic-post-template.md`.
 
@@ -41,9 +43,9 @@ The home-page LinkedIn link points to `jirrong0116`. `scripts/sync_linkedin.py` 
 
 **Research** stacks one grey rounded box per Markdown file in `_research/`, with a separate project page for longer notes and updates. The two initial projects come from the repository CV. Copy [docs/research-template.md](docs/research-template.md) to add another; higher `order` values appear first.
 
-**Resources** works the same way using `_resources/`. Upload seminar slides, handouts, or other files to `assets/resources/`, then copy [docs/resource-template.md](docs/resource-template.md). Each record supports multiple local downloads or external HTTP(S) links, a seminar overview, and references. No sample seminar is published.
+**Resources** uses `_resources/` for course notes, assignments, reports, seminar slides, handouts, and supporting code. Upload files to `assets/resources/`, then copy [docs/resource-template.md](docs/resource-template.md). Each record supports a type (`kind`), optional `course`/`term` and event information, multiple downloads or external HTTP(S) links, a description, and references. No sample material is published.
 
-Open **Site guide** in the footer for pre-filled **New research project** / **New seminar resource** buttons and an upload link. Templates start with `published: false`; change it to `true` when ready. Unpublished entries are omitted from the site and sitemap, while source files and uploaded materials remain public on GitHub. Keep filenames stable to preserve their URLs. The original Research Interests page remains available from Research and the home-page topic links.
+Open **Site guide** in the footer for pre-filled **New research project**, **New course material**, **New report**, and **New seminar** buttons, plus an upload link. Templates start with `published: false`; change it to `true` when ready. Unpublished entries are omitted from the site and sitemap, while source files and uploaded materials remain public on GitHub. Keep filenames stable to preserve their URLs. The original Research Interests page remains available from Research and the home-page topic links.
 
 ## News
 
