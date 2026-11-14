@@ -2,14 +2,14 @@
 title: Resources
 layout: notebook
 notebook_class: record-index
-excerpt: "Seminar slides, handouts, and supporting materials by Jiho Hwang."
+excerpt: "Course notes, reports, seminar materials, and other academic resources by Jiho Hwang."
 permalink: /resources/
 lang: en
 ---
 
 # Resources
 
-Seminar slides, handouts, and supporting materials.
+Materials I create while taking courses and doing research: course notes, reports, seminar slides, and supporting files.
 
 <div class="record-stack" markdown="0">
 {% assign materials = site.resources | where_exp: 'resource', 'resource.published != false' | sort: 'order' | reverse %}
@@ -27,8 +27,8 @@ Seminar slides, handouts, and supporting materials.
 </article>
 {% else %}
 <div class="well record-card resource-empty">
-  <h2>Seminar materials</h2>
-  <p>No seminar materials have been published yet.</p>
+  <h2>Academic materials</h2>
+  <p>No resources have been published yet.</p>
 </div>
 {% endfor %}
 </div>

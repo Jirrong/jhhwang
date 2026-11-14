@@ -49,32 +49,37 @@ Add dated updates, figures, or results here as the work develops.
 
 Add papers, datasets, or related blog posts.
 `);
-  prepareEntry('new-resource-link', 'seminar-title.md', order => `---
-title: "Seminar title"
+  const resourceTypes = [
+    { id: 'new-resource-link', stem: 'course-notes', kind: 'Course material', title: 'Course notes title' },
+    { id: 'new-report-link', stem: 'report-title', kind: 'Report', title: 'Report title' },
+    { id: 'new-seminar-link', stem: 'seminar-title', kind: 'Seminar', title: 'Seminar title' }
+  ];
+  resourceTypes.forEach(({ id, stem, kind, title }) => prepareEntry(id, `${stem}.md`, order => `---
+title: "${title}"
 order: ${order}
-kind: Seminar
+kind: ${kind}
+course: ""
+term: ""
 event: ""
 event_date: ""
-summary: "Describe the seminar topic and intended audience."
+summary: "Describe the material, its purpose, and what it covers."
 topics: [Chemistry]
 files:
-  - label: "Slides (PDF)"
-    url: /assets/resources/your-seminar.pdf
+  - label: "PDF"
+    url: /assets/resources/${stem}.pdf
 published: false
 ---
 
-## Overview
+## About
 
-Introduce the seminar and what the audience can learn from it.
+Introduce the notes, report, or presentation and the context in which it was made.
 
-## Outline
+## Contents
 
-1. Background
-2. Main discussion
-3. Further reading
+Summarize the topics, methods, or questions covered.
 
 ## References
 
-Add the sources used in the seminar.
-`);
+Add sources and further reading.
+`));
 })();

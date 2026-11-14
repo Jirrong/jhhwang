@@ -1,4 +1,9 @@
 {% assign record = include.record %}
-{% if record.event_date and record.event_date != '' or record.event and record.event != '' %}
-<p class="text-muted record-meta">{% if record.event_date and record.event_date != '' %}{{ record.event_date | escape }}{% if record.event and record.event != '' %} · {% endif %}{% endif %}{{ record.event | escape }}</p>
+{% assign resource_course = record.course | default: '' %}{% assign resource_term = record.term | default: '' %}
+{% if resource_course != '' or resource_term != '' %}
+<p class="text-muted record-meta">{% if resource_course != '' %}{{ resource_course | escape }}{% if resource_term != '' %} · {% endif %}{% endif %}{{ resource_term | escape }}</p>
+{% endif %}
+{% assign resource_date = record.event_date | default: '' %}{% assign resource_event = record.event | default: '' %}
+{% if resource_date != '' or resource_event != '' %}
+<p class="text-muted record-meta">{% if resource_date != '' %}{{ resource_date | escape }}{% if resource_event != '' %} · {% endif %}{% endif %}{{ resource_event | escape }}</p>
 {% endif %}

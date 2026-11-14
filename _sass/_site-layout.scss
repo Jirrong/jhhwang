@@ -3,11 +3,47 @@
 // container from shrinking to the intrinsic width of a short page.
 .container-fluid {
   width: 100%;
+  max-width: 1360px;
+}
+
+// Keep the long site title and the section menu on one row when expanded.
+.navbar-default {
+  border-left: 0;
+  border-right: 0;
+}
+.navbar-default .navbar-brand {
+  white-space: nowrap;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.navbar-default .navbar-nav > li > a {
+  background-color: transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, .08), rgba(0, 0, 0, .08));
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .2s ease, color .2s ease;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: $link-color;
+  background-color: transparent;
+  background-size: 100% 100%;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: $link-color;
+  background-color: transparent;
+  box-shadow: inset 0 -2px 0 $link-color;
+}
+.navbar-default .navbar-nav > li > a:focus-visible {
+  outline: 2px solid $link-color;
+  outline-offset: -3px;
 }
 
 .home-profile {
   margin-top: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 44px;
   line-height: 1.7;
 }
 .home-profile .profile-contact {
@@ -19,12 +55,20 @@
   margin-left: auto;
   margin-right: auto;
 }
+#homeid .home-profile .profile-photo {
+  margin: 0 auto;
+}
+#homeid > h2 {
+  margin-top: 40px;
+  margin-bottom: 18px;
+}
 .home-affiliations {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 18px 26px;
-  margin-top: 24px;
+  gap: 24px 36px;
+  margin-top: 32px;
+  margin-bottom: 8px;
 }
 #homeid .home-affiliations .affiliation-logo {
   display: block;
@@ -36,6 +80,11 @@
   border-radius: 0;
   box-shadow: none;
   object-fit: contain;
+}
+// The chemistry PNG has extra white margins: 72px gives ~54px of artwork.
+#homeid .home-affiliations .affiliation-chemistry .affiliation-logo {
+  height: 72px;
+  max-height: 72px;
 }
 .conference-section {
   margin-top: 36px;
@@ -49,8 +98,8 @@
 }
 .conference-title {
   font-size: 20px;
-  line-height: 1.5;
-  margin-bottom: 14px;
+  line-height: 1.35;
+  margin-bottom: 10px;
 }
 .linkedin-text {
   white-space: pre-wrap;
@@ -83,8 +132,8 @@
 }
 
 .home-news {
-  margin-top: 36px;
-  padding-top: 6px;
+  margin-top: 44px;
+  padding-top: 12px;
   padding-bottom: 24px;
   border-top: 1px solid $gray-lighter;
 }
@@ -252,16 +301,24 @@
 }
 .record-card {
   border-radius: 8px;
-  padding: 24px 28px;
+  padding: 20px 24px;
   margin-bottom: 24px;
   overflow-wrap: break-word;
+}
+.record-card,
+.publication-highlight {
+  line-height: 1.45;
+}
+.record-card p,
+.publication-highlight p {
+  margin-bottom: 8px;
 }
 .record-heading {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 10px 18px;
-  margin-bottom: 12px;
+  gap: 8px 14px;
+  margin-bottom: 8px;
 }
 .record-heading h1,
 .record-heading h2 {
@@ -278,30 +335,30 @@
   line-height: 1.5;
 }
 .record-meta {
-  line-height: 1.65;
-  margin-bottom: 14px;
+  line-height: 1.45;
+  margin-bottom: 10px;
 }
 .record-summary {
   font-size: 17px;
-  line-height: 1.75;
-  margin-bottom: 16px;
+  line-height: 1.5;
+  margin-bottom: 12px;
 }
 .record-topics {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 .record-topics li {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   max-width: 100%;
 }
 .record-topics .label {
   white-space: normal;
-  line-height: 1.6;
+  line-height: 1.3;
 }
 .record-files {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 18px 0;
+  margin: 14px 0;
 }
 .record-files .btn {
   white-space: normal;
@@ -311,7 +368,7 @@
   margin-bottom: 0;
 }
 .record-read {
-  margin-top: 18px;
+  margin-top: 12px;
 }
 .record-header {
   margin-top: 20px;
@@ -338,7 +395,45 @@
     width: 100%;
   }
 }
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-header {
+    float: none;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-collapse {
+    border-top: 1px solid $gray-lighter;
+  }
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .navbar-collapse.collapse.in {
+    display: block !important;
+  }
+  .navbar-nav,
+  .navbar-right {
+    float: none !important;
+    margin: 7.5px -15px;
+  }
+  .navbar-nav > li {
+    float: none;
+  }
+  .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
 @media (max-width: 767px) {
+  .navbar-default .navbar-brand {
+    font-size: 18px;
+  }
+  #homeid > h2 {
+    margin-top: 32px;
+  }
+  #homeid .home-profile .profile-photo {
+    margin-top: 24px;
+  }
   .news-brief li {
     grid-template-columns: minmax(0, 1fr);
     gap: 2px;
@@ -366,5 +461,17 @@
   }
   .notebook-page .input-group-btn .btn {
     min-height: 42px;
+  }
+}
+@media (max-width: 479px) {
+  .navbar-default .navbar-brand {
+    font-size: 16px;
+    padding-left: 16px;
+    padding-right: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .navbar-default .navbar-nav > li > a {
+    transition: none;
   }
 }

@@ -37,6 +37,6 @@ My research experience includes activation/strain analysis, energy decomposition
 
 My conference presentations include work on the driving force of an aromatic ring-opening/ring-closing metathesis cascade.
 
-<p><a href="{{ site.cv_pdf | relative_url }}" download="Jiho_Hwang_CV.pdf" type="application/pdf">Download the CV (PDF)</a> for the presentation record.</p>
+<p><a href="{{ site.cv_pdf | relative_url }}" target="_blank" rel="noopener" type="application/pdf">View the CV (PDF)</a> for the presentation record.</p>
 
 [Contact me](mailto:{{ site.email }})

@@ -1,32 +1,33 @@
 ---
-title: "Seminar title"
+title: "Resource title"
 order: 1
-kind: Seminar
+kind: Course material
+# Other examples: Report, Seminar, Lab report, Assignment, Reading notes
+course: ""
+term: ""
 event: ""
 event_date: ""
-summary: "Describe the seminar topic and intended audience."
+summary: "Describe the material, its purpose, and what it covers."
 topics: [Chemistry]
 files:
-  - label: "Slides (PDF)"
-    url: /assets/resources/your-seminar.pdf
+  - label: "PDF"
+    url: /assets/resources/your-resource.pdf
 # Add more files as needed:
 # - label: "Presentation (PPTX)"
-#   url: /assets/resources/your-seminar.pptx
+#   url: /assets/resources/your-presentation.pptx
 # - label: "Supporting code"
 #   url: https://github.com/your-account/your-repository
 published: false
 ---
 
-## Overview
+## About
 
-Introduce the seminar and what the audience can learn from it.
+Introduce the notes, report, or presentation and the context in which it was made.
 
-## Outline
+## Contents
 
-1. Background
-2. Main discussion
-3. Further reading
+Summarize the topics, methods, or questions covered.
 
 ## References
 
-Add the sources used in the seminar.
+Add sources and further reading.
