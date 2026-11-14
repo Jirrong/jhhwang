@@ -7,6 +7,6 @@ permalink: /news/
 lang: en
 ---
 
-# News
+<header class="page-heading" markdown="0"><h1>News</h1><p class="page-lede">Updates from my research and academic life.</p></header>
 
 {% include news-archive.html %}

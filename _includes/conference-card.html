@@ -1,0 +1,18 @@
+{% assign conference = include.conference %}
+<article class="well record-card conference-card" aria-labelledby="{{ conference.id | escape }}">
+  <div class="record-main">
+    <div class="record-topline"><span>{{ conference.type | escape }}</span><span>{{ conference.date | escape }}</span></div>
+    <h3 id="{{ conference.id | escape }}" class="record-title">{{ conference.title | escape }}</h3>
+    {% include entry-authors.html authors=conference.authors %}
+    <p class="record-context"><strong>{{ conference.meeting | escape }}</strong>{% if conference.location and conference.location != '' %}<span> · {{ conference.location | escape }}</span>{% endif %}</p>
+    {% assign conference_facts = conference.session | append: conference.distinction | append: conference.abstract_number | strip %}
+    {% if conference_facts != '' %}<dl class="record-facts">
+      {% if conference.session and conference.session != '' %}<dt>Session</dt><dd>{{ conference.session | escape }}</dd>{% endif %}
+      {% if conference.distinction and conference.distinction != '' %}<dt>Recognition</dt><dd>{{ conference.distinction | escape }}</dd>{% endif %}
+      {% if conference.abstract_number and conference.abstract_number != '' %}<dt>Abstract no.</dt><dd>#{{ conference.abstract_number | escape }}</dd>{% endif %}
+    </dl>{% endif %}
+    {% include entry-media.html record=conference folder='/images/conferences/' %}
+    {% if conference.event_url and conference.event_url != '' %}<div class="record-links"><a href="{{ conference.event_url | escape }}">Meeting information {% include external-arrow.html %}</a></div>{% endif %}
+    {% include abstract-toggle.html text=conference.abstract %}
+  </div>
+</article>

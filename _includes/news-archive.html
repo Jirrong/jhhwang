@@ -1,8 +1,14 @@
-<div class="news-archive" markdown="0">
-  {% for article in site.data.news %}
-  <article class="news-entry">
-    <p class="text-muted news-date"><strong>{{ article.date | escape }}</strong></p>
-    <div class="news-body">{{ article.headline | markdownify }}</div>
+<div class="news-archive record-stack" markdown="0">
+  {% assign news_entries = site.data.news | where_exp: 'article', 'article.published != false' %}
+  {% for article in news_entries %}
+  {% assign fallback_id = 'news-' | append: forloop.index %}{% assign news_id = article.id | default: fallback_id %}
+  <article class="well record-card news-card" id="{{ news_id | escape }}">
+    <div class="record-main">
+      <div class="record-topline"><span>{{ article.date | escape }}</span></div>
+      {% if article.title and article.title != '' %}<h2 class="record-title">{{ article.title | escape }}</h2>{% endif %}
+      <div class="record-body news-body">{{ article.headline | markdownify }}</div>
+      {% include entry-media.html record=article folder='/images/news/' %}
+    </div>
   </article>
   {% else %}
   <p>No news yet.</p>

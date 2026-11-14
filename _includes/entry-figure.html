@@ -1,0 +1,4 @@
+<figure class="entry-figure">
+  <a class="entry-image-link" href="{{ include.file | relative_url | escape }}" target="_blank" rel="noopener" aria-label="Open full-size image: {{ include.alt | escape }}"><img src="{{ include.file | relative_url | escape }}" alt="{{ include.alt | escape }}" loading="lazy" decoding="async"></a>
+  {% if include.kind == 'graphical' or include.caption and include.caption != '' %}<figcaption>{% if include.kind == 'graphical' %}<span class="media-label">Graphical abstract</span>{% endif %}{% if include.caption and include.caption != '' %}<span>{{ include.caption | escape }}</span>{% endif %}</figcaption>{% endif %}
+</figure>

@@ -1,0 +1,15 @@
+{% assign paper = include.paper %}
+<article class="well record-card publication-card{% if paper.highlight == 1 %} publication-selected{% endif %}">
+  <div class="record-main">
+    <div class="record-topline"><span>{{ paper.type | default: 'Publication' | escape }}</span>{% if paper.highlight == 1 %}<span class="record-badge">Selected</span>{% endif %}</div>
+    <h3 class="record-title">{% if paper.link.url and paper.link.url != '' %}<a href="{{ paper.link.url | escape }}">{{ paper.title | escape }}</a>{% else %}{{ paper.title | escape }}{% endif %}</h3>
+    {% include entry-authors.html authors=paper.authors %}
+    {% if paper.link.display and paper.link.display != '' %}<p class="record-citation">{{ paper.link.display | escape }}</p>{% endif %}
+    {% if paper.description and paper.description != '' %}<div class="record-body">{{ paper.description | markdownify }}</div>{% endif %}
+    {% include entry-media.html record=paper folder='/images/pubpic/' legacy_kind='graphical' %}
+    {% if paper.news1 and paper.news1 != '' %}<div class="record-note">{{ paper.news1 | markdownify }}</div>{% endif %}
+    {% if paper.news2 and paper.news2 != '' %}<div class="record-note">{{ paper.news2 | markdownify }}</div>{% endif %}
+    {% if paper.link.url and paper.link.url != '' %}<div class="record-links"><a href="{{ paper.link.url | escape }}">Read publication {% include external-arrow.html %}</a></div>{% endif %}
+    {% include abstract-toggle.html text=paper.abstract %}
+  </div>
+</article>

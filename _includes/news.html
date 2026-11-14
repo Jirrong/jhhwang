@@ -1,10 +1,11 @@
 <section id="newsid" class="home-news" aria-labelledby="news-heading">
   <h2 id="news-heading">News</h2>
   <ul class="list-unstyled news-brief">
-    {% for article in site.data.news limit:3 %}
+    {% assign news_entries = site.data.news | where_exp: 'article', 'article.published != false' %}
+    {% for article in news_entries limit:3 %}
     <li>
       <span class="text-muted news-date">{{ article.date | escape }}</span>
-      <p>{{ article.summary | default: article.headline | markdownify | strip_html | normalize_whitespace | truncate: 180 }}</p>
+      <p><a href="{{ '/news/' | relative_url }}{% if article.id %}#{{ article.id | escape }}{% endif %}">{{ article.summary | default: article.headline | markdownify | strip_html | normalize_whitespace | truncate: 180 }}</a></p>
     </li>
     {% endfor %}
   </ul>

@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'yaml'
 require 'uri'
+require_relative 'content_media'
 
 root = File.expand_path('..', __dir__)
 load_yaml = ->(path) { YAML.safe_load(File.read(File.join(root, path)), aliases: false) }
@@ -64,11 +65,7 @@ else
         errors << "Publication #{index}: invalid URL"
       end
     end
-    image = paper.fetch('image', '').to_s
-    unless image.empty?
-      path = File.expand_path(image, File.join(root, 'images/pubpic'))
-      errors << "Publication #{index}: missing image #{image}" unless path.start_with?(File.join(root, 'images/pubpic') + '/') && File.file?(path)
-    end
+    errors.concat(ContentMedia.check(paper, root, "Publication #{index}", legacy_folder: 'images/pubpic'))
   end
 end
 conferences = load_yaml.call('_data/conferences.yml')
@@ -82,6 +79,7 @@ else
       next
     end
     next if entry['published'] == false
+    errors.concat(ContentMedia.check(entry, root, "Conference #{index}", legacy_folder: 'images/conferences'))
     %w[id meeting date type title authors].each do |field|
       errors << "Conference #{index}: #{field} is required" unless entry[field].is_a?(String) && !entry[field].strip.empty?
     end
@@ -96,6 +94,30 @@ else
         errors << "Conference #{index}: invalid event_url"
       end
     end
+  end
+end
+news = load_yaml.call('_data/news.yml')
+if !news.is_a?(Array)
+  errors << '_data/news.yml must be a YAML list'
+else
+  ids = []
+  news.each_with_index do |entry, index|
+    unless entry.is_a?(Hash)
+      errors << "News #{index}: expected a record"
+      next
+    end
+    if entry.key?('published') && ![true, false].include?(entry['published'])
+      errors << "News #{index}: published must be true or false"
+    end
+    next if entry['published'] == false
+    %w[date headline].each do |field|
+      errors << "News #{index}: #{field} is required" unless entry[field].is_a?(String) && !entry[field].strip.empty?
+    end
+    if entry['id']
+      errors << "News #{index}: use a unique lowercase id" unless entry['id'].to_s.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/) && !ids.include?(entry['id'])
+      ids << entry['id']
+    end
+    errors.concat(ContentMedia.check(entry, root, "News #{index}", legacy_folder: 'images/news'))
   end
 end
 affiliations = load_yaml.call('_data/affiliations.yml')

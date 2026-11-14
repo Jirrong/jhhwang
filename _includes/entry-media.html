@@ -1,0 +1,9 @@
+{% assign media_items = include.record.images %}
+{% if media_items.size > 0 %}
+<div class="entry-media{% if media_items.size > 1 %} entry-media-multiple{% endif %}" aria-label="Images">{% for media_item in media_items %}{% include entry-figure.html file=media_item.file alt=media_item.alt caption=media_item.caption kind=media_item.kind %}{% endfor %}</div>
+{% elsif include.record.image and include.record.image != '' %}
+{% assign legacy_file = include.record.image %}{% assign first_character = legacy_file | slice: 0, 1 %}
+{% if first_character != '/' %}{% assign legacy_file = include.folder | append: legacy_file %}{% endif %}
+{% assign fallback_alt = 'Image for ' | append: include.record.title %}{% assign legacy_alt = include.record.image_alt | default: fallback_alt %}
+<div class="entry-media" aria-label="Images">{% include entry-figure.html file=legacy_file alt=legacy_alt caption=include.record.image_caption kind=include.legacy_kind %}</div>
+{% endif %}

@@ -103,8 +103,12 @@ Use `_drafts/` or `published: false` to omit a post from the built site, search,
 
 Add entries at the top of [`_data/news.yml`](https://github.com/{{ site.repository }}/edit/{{ site.github_branch }}/_data/news.yml), newest first. Home shows the first three entries briefly; **News** shows every full `headline`. An optional `summary` gives Home a shorter version, while the full headline supports Markdown links.
 
+Use the [news template](https://github.com/{{ site.repository }}/blob/{{ site.github_branch }}/docs/news-template.yml) to add a short `title`, stable `id`, and photos. [Upload news photos](https://github.com/{{ site.repository }}/upload/{{ site.github_branch }}/images/news) before adding their paths to `images`. Each news item has its own grey card in the full archive. Home keeps the brief summary and links to that item.
+
 ```yaml
 - date: "14 November 2026"
+  id: your-news-id
+  title: "A short news title"
   summary: "A brief announcement for the home page."
   headline: "The complete announcement, with any details and links."
 ```
@@ -119,19 +123,45 @@ See the [LinkedIn sync setup](https://github.com/{{ site.repository }}/blob/{{ s
 ## Add a publication
 {: #add-a-publication }
 
-The Publications page keeps the original Allan Lab fields and highlighted-paper layout. It starts with an empty list, so no sample paper is shown as your work.
+The Publications page keeps the original Allan Lab data fields. Papers appear once in full-width cards using the same body geometry as Research. The journal list remains empty until you add your own paper.
 
 1. Open the [publication template](https://github.com/{{ site.repository }}/blob/{{ site.github_branch }}/docs/publication-template.yml).
 2. Copy an entry into the [publication data file](https://github.com/{{ site.repository }}/edit/{{ site.github_branch }}/_data/publist.yml). For the first entry, replace the empty `[]` list.
 3. Fill in the title, authors, citation, and link. Leave `published: false` while editing, then set it to `true` to display the entry.
-4. Set `highlight: 1` to show a paper in **Selected Publications** as well as the full list. `highlight: 0` shows it in the full list only.
-5. An optional `image` is a filename in `images/pubpic/`. `description`, `news1`, and `news2` provide the original template's summary and news fields.
+4. Set `highlight: 1` to add a **Selected** badge; `highlight: 0` uses a standard card. Each paper is listed once.
+5. `description` is a short summary. The optional `abstract` holds full text and starts collapsed behind an **Abstract — Read** control. `news1` and `news2` remain supported for short notes.
+6. Upload a photo or graphical abstract to `images/pubpic/`, then use `images` as shown below. The legacy `image` filename field still works.
 
 An image and link are optional; missing fields do not create broken placeholders.
 
 ### Add a conference presentation
 
 The **Conferences** section appears below Publications. Add an entry to [`_data/conferences.yml`](https://github.com/{{ site.repository }}/edit/{{ site.github_branch }}/_data/conferences.yml), using the [conference template](https://github.com/{{ site.repository }}/blob/{{ site.github_branch }}/docs/conference-template.yml). Keep the newest meeting first. The title, authors, dates, poster/talk type, session, distinction, abstract number, and meeting link can be edited independently. `published: false` hides a draft entry. Conference abstracts and posters stay separate from journal publications.
+
+Conference entries also support `abstract` and `images`. [Upload conference images](https://github.com/{{ site.repository }}/upload/{{ site.github_branch }}/images/conferences) first. `abstract_number` identifies a submission; `abstract` is its actual text. A missing abstract does not create an empty disclosure.
+
+### Images, graphical abstracts, and full abstracts
+
+The same image format works for News, Research, Publications, and Conferences:
+
+```yaml
+images:
+  - file: /images/pubpic/your-graphical-abstract.png
+    alt: "Describe the reaction scheme or scientific result."
+    kind: graphical
+    caption: "An optional figure caption."
+  - file: /images/pubpic/your-photo.jpg
+    alt: "Describe the photograph."
+    kind: photo
+    caption: ""
+abstract: >-
+  Paste the full abstract here. It is collapsed initially and opens when
+  a reader chooses Abstract. Paragraphs and Markdown emphasis are supported.
+```
+
+Use the matching folder: `images/news/`, `images/research/`, `images/pubpic/`, or `images/conferences/`. Add more `images` items for a gallery. Every new image requires descriptive `alt` text. Images keep their complete aspect ratio, and clicking opens the original in a new tab; diagrams are not cropped. `kind: graphical` adds a Graphical abstract caption label. Image captions are plain text.
+
+Full abstracts are optional on paper and conference records. Use `|` or `>-` YAML text blocks for long text and blank lines for separate paragraphs. Math uses the same `$...$` and `$$...$$` notation as the blog. The Abstract control works without JavaScript, including keyboard navigation. Preview examples are not published as real papers or news.
 
 ## Update the CV
 {: #update-the-cv }

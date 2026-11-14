@@ -6,9 +6,17 @@
   link:
     url: ""       # DOI or publisher URL; optional when unavailable.
     display: ""   # Example format: Journal, volume, pages (year).
-  image: ""       # Optional filename in images/pubpic/.
+  image: ""       # Legacy single image filename in images/pubpic/; still supported.
+  image_alt: ""
+  image_caption: ""
+  images: []      # Or replace [] with the list below; shown on every card.
+  # - file: /images/pubpic/your-graphical-abstract.png
+  #   alt: "Describe the reaction scheme or result shown."
+  #   kind: graphical   # graphical or photo
+  #   caption: ""
+  abstract: ""    # Optional full abstract; Markdown/math, collapsed by default.
   description: "" # Optional short summary; Markdown is supported.
-  highlight: 0    # 1 = selected-paper card and full list; 0 = full list only.
+  highlight: 0    # 1 adds a Selected badge; each paper is shown once, full width.
   news1: ""       # Optional emphasized news; original template field.
   news2: ""       # Optional additional news; Markdown is supported.
   published: false
