@@ -1,14 +1,13 @@
 ---
 title: "News"
-layout: textlay
+layout: notebook
+notebook_class: news-page
 excerpt: "News and announcements from Jiho Hwang."
 permalink: /allnews.html
+lang: en
+sitemap: false
 ---
 
 # News
 
-{% for article in site.data.news %}
-## {{ article.date }}
-
-{{ article.headline }}
-{% endfor %}
+{% include news-archive.html %}

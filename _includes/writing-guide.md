@@ -1,6 +1,6 @@
 Blog posts, research projects, and seminar resources use Markdown files. Publications use the [Allan Lab template](https://www.allanlab.org/aboutwebsite.html) data fields; the CV is a downloadable PDF.
 
-[Research](#add-research) · [Resources](#add-resources) · [Blog](#write-a-post) · [Publications](#add-a-publication) · [CV](#update-the-cv)
+[Research](#add-research) · [Resources](#add-resources) · [Blog](#write-a-post) · [News](#update-news) · [Publications](#add-a-publication) · [CV](#update-the-cv)
 
 ## Add a research project
 {: #add-research }
@@ -93,6 +93,17 @@ Upload figures to `images/posts/` and use a path relative to the site's base URL
 Choose **Commit changes** in GitHub. A commit to `gh-pages` rebuilds the site; a new branch and pull request lets you review the change first. Existing posts can be edited in the [posts folder](https://github.com/{{ site.repository }}/tree/{{ site.github_branch }}/_posts).
 
 Use `_drafts/` or `published: false` to omit a post from the built site, search, and RSS. This is a public repository, so draft source files are still readable on GitHub. A future-dated post is hidden until its date, but publishing then requires another build; GitHub Pages does not automatically schedule that build.
+
+## Update news
+{: #update-news }
+
+Add entries at the top of [`_data/news.yml`](https://github.com/{{ site.repository }}/edit/{{ site.github_branch }}/_data/news.yml), newest first. Home shows the first three entries briefly; **News** shows every full `headline`. An optional `summary` gives Home a shorter version, while the full headline supports Markdown links.
+
+```yaml
+- date: "14 November 2026"
+  summary: "A brief announcement for the home page."
+  headline: "The complete announcement, with any details and links."
+```
 
 ## Add a publication
 {: #add-a-publication }

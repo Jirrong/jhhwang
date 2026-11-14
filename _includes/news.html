@@ -1,5 +1,12 @@
-<div class="well">
-<h4>News</h4>
-{% for article in site.data.news limit:9 %}<p><strong>{{ article.date | escape }}</strong></p><div>{{ article.headline | markdownify }}</div>{% endfor %}
-<p><a href="{{ '/allnews.html' | relative_url }}">All news</a></p>
-</div>
+<section id="newsid" class="home-news" aria-labelledby="news-heading">
+  <h2 id="news-heading">News</h2>
+  <ul class="list-unstyled news-brief">
+    {% for article in site.data.news limit:3 %}
+    <li>
+      <span class="text-muted news-date">{{ article.date | escape }}</span>
+      <p>{{ article.summary | default: article.headline | markdownify | strip_html | normalize_whitespace | truncate: 180 }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">→</span></a></p>
+</section>

@@ -39,6 +39,10 @@ The list starts empty; conference presentations remain in the CV. The source lab
 
 Open **Site guide** in the footer for pre-filled **New research project** / **New seminar resource** buttons and an upload link. Templates start with `published: false`; change it to `true` when ready. Unpublished entries are omitted from the site and sitemap, while source files and uploaded materials remain public on GitHub. Keep filenames stable to preserve their URLs. The original Research Interests page remains available from Research and the home-page topic links.
 
+## News
+
+Home uses the full content width, with a brief News list below its main content. The latest three entries come from `_data/news.yml` in file order. Add new entries at the top; use `date`, full Markdown `headline`, and an optional short `summary`. The dedicated `/news/` page and original `/allnews.html` address share the full archive. The News menu and home-page **All news** link point to `/news/`.
+
 ## Build and validate
 
 ```sh
