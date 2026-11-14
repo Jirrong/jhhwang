@@ -41,7 +41,7 @@ def local_target(url,current):
 pages={}
 for path in root.rglob('*.html'):
  p=Page(str(path.relative_to(root)));p.feed(path.read_text());pages[path]=p
-required=['index.html','cv/index.html','interests/index.html','research/index.html','resources/index.html','publications/index.html','blog/index.html','guide/index.html','writing/index.html','allnews.html','404.html']
+required=['index.html','cv/index.html','interests/index.html','research/index.html','resources/index.html','publications/index.html','blog/index.html','news/index.html','guide/index.html','writing/index.html','allnews.html','404.html']
 for route in required:
  if root/route not in pages:errors.append('missing route: '+route)
 for path,page in pages.items():
@@ -64,8 +64,9 @@ for path,page in pages.items():
    errors.append(f'{page.path}: unexpected screen-theme stylesheet {href}')
 home=pages.get(root/'index.html')
 if home:
- if 'col-sm-8' not in home.attrs.get('homeid',{}).get('class',''):errors.append('home main column changed from original template')
- if 'col-sm-4' not in home.attrs.get('newsid',{}).get('class',''):errors.append('home news column changed from original template')
+ if 'col-sm-12' not in home.attrs.get('homeid',{}).get('class',''):errors.append('home must use the full content width after moving News below the main content')
+ if 'home-news' not in home.attrs.get('newsid',{}).get('class',''):errors.append('home brief News section is missing')
+ if 'col-sm-4' in home.attrs.get('newsid',{}).get('class',''):errors.append('home News must not use the retired sidebar column')
 index=json.loads((root/'search.json').read_text())
 urls=[p['url'] for p in index]
 if set(pages[root/'blog/index.html'].rows)!=set(urls):errors.append('blog list and search disagree')
