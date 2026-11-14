@@ -1,7 +1,7 @@
 ---
 title: "Publications"
 layout: gridlay
-excerpt: "Publications by Jiho Hwang."
+excerpt: "Publications and conference presentations by Jiho Hwang."
 permalink: /publications/
 ---
 
@@ -35,3 +35,25 @@ permalink: /publications/
 {% endfor %}
 {% endif %}
 </div>
+
+<section id="conferences" class="conference-section" aria-labelledby="conferences-heading" markdown="0">
+<h2 id="conferences-heading">Conferences</h2>
+{% assign conferences = site.data.conferences | where_exp: 'entry', 'entry.published != false' %}
+{% for conference in conferences %}
+<article class="well record-card conference-card" aria-labelledby="{{ conference.id | escape }}">
+  <div class="record-heading">
+    <h3 id="{{ conference.id | escape }}">{{ conference.meeting | escape }}</h3>
+    <span class="label label-default">{{ conference.type | escape }}</span>
+  </div>
+  <p class="text-muted record-meta">{{ conference.date | escape }}{% if conference.location and conference.location != '' %} · {{ conference.location | escape }}{% endif %}</p>
+  <h4 class="conference-title">{{ conference.title | escape }}</h4>
+  <p>{{ conference.authors | escape }}</p>
+  {% if conference.session and conference.session != '' %}<p>{{ conference.session | escape }}</p>{% endif %}
+  {% if conference.distinction and conference.distinction != '' %}<p><strong>{{ conference.distinction | escape }}</strong></p>{% endif %}
+  {% if conference.abstract_number and conference.abstract_number != '' %}<p class="text-muted">Abstract #{{ conference.abstract_number | escape }}</p>{% endif %}
+  {% if conference.event_url and conference.event_url != '' %}<p class="record-read"><a href="{{ conference.event_url | escape }}">Meeting information <span aria-hidden="true">→</span></a></p>{% endif %}
+</article>
+{% else %}
+<p>No conference presentations listed.</p>
+{% endfor %}
+</section>

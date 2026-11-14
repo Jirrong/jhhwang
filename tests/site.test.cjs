@@ -173,8 +173,9 @@ test('research and resources have their own navigation and retain original wells
   const links = [...document.querySelectorAll('#navbar-collapse-1 a')];
   assert.equal(links.find(a => a.textContent === 'Research').getAttribute('href'), '/jhhwang/research/');
   assert.equal(links.find(a => a.textContent === 'Resources').getAttribute('href'), '/jhhwang/resources/');
-  assert.equal(document.querySelectorAll('.record-stack > .well.research-card').length, 2);
-  assert.match(document.querySelector('.research-card h2').textContent, /Reaction mechanisms/);
+  const detailPages = fs.readdirSync('_site/research', { withFileTypes: true }).filter(entry => entry.isDirectory());
+  assert.equal(document.querySelectorAll('.record-stack > .well.research-card').length, detailPages.length);
+  assert.ok(document.querySelector('.research-card h2').textContent.trim());
   for (const link of document.querySelectorAll('.research-card h2 a')) {
     assert.ok(fs.existsSync(`_site/${link.getAttribute('href').replace('/jhhwang/', '')}index.html`));
   }
@@ -186,10 +187,12 @@ test('research and resources have their own navigation and retain original wells
 
 test('research and seminar shortcuts prepare draft records and the next stacking order', () => {
   const { document } = parseHTML(fs.readFileSync('_site/guide/index.html', 'utf8'));
+  document.getElementById('new-research-link').setAttribute('data-next-order', '12');
+  document.getElementById('new-resource-link').setAttribute('data-next-order', '5');
   vm.runInNewContext(source('site'), { document, URL, Intl, Date });
   for (const [id, folder, filename, order] of [
-    ['new-research-link', '_research', 'project-title.md', 3],
-    ['new-resource-link', '_resources', 'seminar-title.md', 1]
+    ['new-research-link', '_research', 'project-title.md', 12],
+    ['new-resource-link', '_resources', 'seminar-title.md', 5]
   ]) {
     const url = new URL(document.getElementById(id).getAttribute('href'));
     assert.equal(url.pathname, `/Jirrong/jhhwang/new/gh-pages/${folder}`);

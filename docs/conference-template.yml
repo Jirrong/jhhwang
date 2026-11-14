@@ -1,0 +1,14 @@
+# Copy an entry into _data/conferences.yml, newest meeting first.
+# Keep conference abstracts/posters separate from journal publications.
+- id: unique-meeting-id
+  meeting: "Conference name"
+  date: "Month Day–Day, Year"
+  location: "City, Country"
+  type: Poster presentation
+  title: "Presentation title"
+  authors: "Authors in the order used on the presentation"
+  session: ""
+  distinction: ""
+  abstract_number: ""
+  event_url: ""
+  published: false

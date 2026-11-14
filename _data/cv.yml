@@ -1,4 +1,5 @@
 # Factual source: the repository CV at f25f182 (record dated 13 February 2026).
+# Current biography and IMC Lab role: the user's November 2026 LinkedIn screenshots.
 # Keep this factual profile consistent with the PDF and the _research/ entries.
 identity:
   name: Jiho Hwang
@@ -9,11 +10,12 @@ identity:
   department_url: https://chem.snu.ac.kr/
   email: jhhwang16@snu.ac.kr
   github: https://github.com/Jirrong
-  portrait: /images/profile.jpg
+  linkedin: https://www.linkedin.com/in/jirrong0116/
+  portrait: /images/profile-lab.jpg
   introduction: >-
-    I am an undergraduate student in the Department of Chemistry at Seoul National
-    University. My interests include organic synthesis, reaction mechanisms,
-    and computational chemistry.
+    I am a first-year undergraduate student in the Department of Chemistry at Seoul
+    National University. My interests include organic and organometallic chemistry,
+    synthetic methodology, and computational approaches to reaction mechanisms.
 education:
   - dates: March 2026–present
     degree: B.S. in Chemistry
@@ -24,6 +26,12 @@ education:
     institution: Gyeonggi Science High School
     detail: 'GPA: 4.19 / 4.30'
 research_experience:
+  - dates: July 2026–present
+    title: Undergraduate Student Researcher
+    institution: Inorganic Molecular Conversion Laboratory, Seoul National University
+    points:
+      - 'Advisor: Prof. Yunho Lee.'
+      - Synthesis of PNP pincer ligands and cobalt complexes for open-shell NOx conversion and upconversion into value-added organic compounds.
   - dates: April 2025–January 2026
     title: Creative R&E
     institution: Gyeonggi Science High School · KOFAC
